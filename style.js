@@ -2,6 +2,17 @@ const marker = document.querySelector('#marker');
 const item = document.querySelectorAll('.container-central-menu a, .container-menu a');
 const header = document.querySelector('header');
 const main = document.querySelector('main');
+const body = document.querySelector('body');
+const model = document.querySelectorAll('#models div');
+
+
+
+
+const easeInOutCubic = (t) => {
+    return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+};
+
+
 
 
 ///////////////HEADER ANIMATIONS///////////////
@@ -37,32 +48,45 @@ header.addEventListener('mouseleave', () => {
 })
 
 ///////////////SCROLL ANIMATIONS///////////////
-    
-// main.addEventListener('scroll', reveal);
+
+main.addEventListener('scroll', reveal);
+
+function reveal() {
+    let reveals = document.querySelectorAll('#models');
+    let revealtop = reveals[0].getBoundingClientRect().top;
+    let screenindex = (revealtop + 0.4444580078125) / window.innerHeight;
+    let screenopacitycalc = Math.abs(screenindex.toFixed(2)) % 1;
+    let screenopacity = Math.abs(1 - (screenopacitycalc.toFixed(2) * 2))
 
 
-// function reveal(){
-//     let reveals = document.querySelectorAll('#models div');
-    
+    // console.log(Math.round(screenopacity))
+    // console.log(Math.abs(Math.round(screenindex)))
 
-//     for(let i = 0; i <  reveals.length; i++) {
+    for (let i = 0; i < model.length; i++) {
 
-//         let windowheigth = window.innerHeight;
-//         let revealtop = reveals[i].getBoundingClientRect().top;
-//         let revealpoint = 150
-        
-//         console.log(reveals[i].getBoundingClientRect().top)
-//         if (revealtop < windowheigth - revealpoint) {
+        //console.log(Math.round(screenopacity))
+        //console.log(Math.abs(Math.round(screenindex)))
 
-//             reveals[i].style.display = 'none'
-            
-//         } else {
+        if (easeInOutCubic(screenopacity) > 0 && i == Math.abs(Math.round(screenindex))) {
 
-//             reveals[i].style.display = 'block'
-            
-//         }
+            for (let i = 0; i < reveals[Math.abs(Math.round(screenindex))].children.length; i++) {
+
+                model[i].style.display = "flex"
+                model[i].style.opacity = easeInOutCubic(screenopacity);
 
 
-//     }
+            }
 
-// }
+
+
+        }
+        else {
+
+            if (model[i] != model[Math.abs(Math.round(screenindex))]) {
+                model[i].style.display = "none"
+
+            }
+        }
+
+    }
+}
