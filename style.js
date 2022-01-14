@@ -60,33 +60,44 @@ function reveal() {
 
 
     // console.log(Math.round(screenopacity))
-    // console.log(Math.abs(Math.round(screenindex)))
+    //console.log(Math.abs(Math.round(screenindex)))
 
     for (let i = 0; i < model.length; i++) {
 
-        //console.log(Math.round(screenopacity))
-        //console.log(Math.abs(Math.round(screenindex)))
-
         if (easeInOutCubic(screenopacity) > 0 && i == Math.abs(Math.round(screenindex))) {
 
-            for (let i = 0; i < reveals[Math.abs(Math.round(screenindex))].children.length; i++) {
 
-                model[i].style.display = "flex"
-                model[i].style.opacity = easeInOutCubic(screenopacity);
+            var revealsIndex = i
+            reveals[Math.abs(Math.round(screenindex))].children[0].style.display = "flex"
+            reveals[Math.abs(Math.round(screenindex))].children[1].style.display = "flex"
+            reveals[Math.abs(Math.round(screenindex))].children[0].style.opacity = easeInOutCubic(screenopacity);
+            reveals[Math.abs(Math.round(screenindex))].children[1].style.opacity = easeInOutCubic(screenopacity);
+
+            // for (let i = 0; i < reveals[Math.abs(Math.round(screenindex))].children.length; i++) {
+            //     reveals[Math.abs(Math.round(screenindex))].model[i].style.display = "flex"
+            //     reveals[Math.abs(Math.round(screenindex))].model[i].style.opacity = easeInOutCubic(screenopacity);
 
 
-            }
+            // }
 
 
 
         }
+
+
         else {
+            if (revealsIndex != Math.abs(Math.round(screenindex)) && revealsIndex != Math.abs(Math.round(screenindex)) + 1) {
 
-            if (model[i] != model[Math.abs(Math.round(screenindex))]) {
-                model[i].style.display = "none"
-
+                for (let i = 0; i < model.length; i++) {
+                    model[i].style.display = "none"
+                }
             }
+
         }
+
+
+
+
 
     }
 }

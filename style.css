@@ -220,6 +220,16 @@ main section {
     background-color: #313338;
 }
 
+.button-wrapper , .model-wrapper {
+
+    display: none;
+}
+
+.section-model-s .button-wrapper , .section-model-s .model-wrapper {
+
+    display: flex;
+}
+
 /* ================> model s <================*/
 
 .section-model-s {
