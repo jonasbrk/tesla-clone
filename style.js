@@ -3,7 +3,7 @@ const item = document.querySelectorAll('.container-central-menu a, .container-me
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const body = document.querySelector('body');
-const model = document.querySelectorAll('#models div');
+// const model = document.querySelectorAll('#models div');
 
 
 
@@ -49,18 +49,45 @@ header.addEventListener('mouseleave', () => {
 
 ///////////////SCROLL ANIMATIONS///////////////
 
-main.addEventListener('scroll', reveal);
+main.addEventListener('scroll', scrollAnimation());
 
-function reveal() {
+function scrollAnimation() {
+    const
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*function reveal() {
     let reveals = document.querySelectorAll('#models');
     let revealtop = reveals[0].getBoundingClientRect().top;
     let screenindex = (revealtop + 0.4444580078125) / window.innerHeight;
     let screenopacitycalc = Math.abs(screenindex.toFixed(2)) % 1;
     let screenopacity = Math.abs(1 - (screenopacitycalc.toFixed(2) * 2))
 
-
-    // console.log(Math.round(screenopacity))
-    //console.log(Math.abs(Math.round(screenindex)))
 
     for (let i = 0; i < model.length; i++) {
 
@@ -73,31 +100,15 @@ function reveal() {
             reveals[Math.abs(Math.round(screenindex))].children[0].style.opacity = easeInOutCubic(screenopacity);
             reveals[Math.abs(Math.round(screenindex))].children[1].style.opacity = easeInOutCubic(screenopacity);
 
-            // for (let i = 0; i < reveals[Math.abs(Math.round(screenindex))].children.length; i++) {
-            //     reveals[Math.abs(Math.round(screenindex))].model[i].style.display = "flex"
-            //     reveals[Math.abs(Math.round(screenindex))].model[i].style.opacity = easeInOutCubic(screenopacity);
-
-
-            // }
-
-
-
         }
 
 
-        else {
-            if (revealsIndex != Math.abs(Math.round(screenindex)) && revealsIndex != Math.abs(Math.round(screenindex)) + 1) {
+        if (revealsIndex != Math.abs(Math.round(screenindex)) && revealsIndex != Math.abs(Math.round(screenindex)) + 1) {
 
-                for (let i = 0; i < model.length; i++) {
-                    model[i].style.display = "none"
-                }
+            for (let i = 0; i < model.length; i++) {
+                model[i].style.display = "none"
             }
-
         }
-
-
-
-
-
     }
 }
+*/
