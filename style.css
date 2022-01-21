@@ -20,7 +20,6 @@ body{
 
 
 header {
-    height: 107px;
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
@@ -49,6 +48,7 @@ header {
     border-radius: 12px;
     transition: background-color 1.5s , width 0.5s;
     z-index: -1;
+    opacity: 0;
  
 
 
@@ -168,21 +168,6 @@ main section {
 
 }
 
-
-
-
-/* .section-model {
-
-    height: 100vh;
-    background-image: url(assets/model-s-bg.jpg);
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-} */
-
 .section-model {
 
     height: 100vh;
@@ -295,6 +280,47 @@ main section {
     background-color: #313338;
 }
 
+.scroll-indicator {
+
+    height: 30px;
+    animation: bouncing-scroll-indicator 2s infinite;
+    animation-delay: 3s;
+
+}
+
+.scroll-indicator-wrapper {
+    opacity: 0;
+    position: fixed;
+    bottom: 30px;
+    animation: ini-reveal-animation-top 1s forwards;
+    animation-delay: 2s;
+}
+
+@keyframes ini-reveal-animation-top {
+
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes bouncing-scroll-indicator {
+    0% {transform: translateY(0);}
+    20% {transform: translateY(10px);}
+    30% {transform: translateY(0);}
+    40% {transform: translateY(5px);}
+    50% {transform: translateY(0);}
+    100% {transform: translateY(0);}
+}
 
 @keyframes ini-reveal-animation {
 
@@ -366,74 +392,6 @@ main section {
 }
 
 
-
-/* .button-wrapper , .model-wrapper {
-
-    display: none;
-}
-
-.section-model-s .button-wrapper , .section-model-s .model-wrapper {
-
-    display: flex;
-} */
-
-/* ================> model s <================*/
-
-.section-model-s {
-
-    background-image: url(assets/model-s-bg.jpg);
-
-}
-
-/* ================> model 3 <================*/
-
-.section-model-3 {
-
-    background-image: url(assets/model-3-bg.jpg);
-
-}
-
-/* ================> model x <================*/
-
-.section-model-x {
-
-    background-image: url(assets/model-x-bg.jpg);
-
-}
-
-/* ================> model y <================*/
-
-.section-model-y {
-
-    background-image: url(assets/model-y-bg.jpg);
-
-}
-
-/* ================> solar roof <================*/
-
-.section-solar-roof {
-
-    background-image: url(assets/solar-roof-bg.jpg);
-
-}
-
-/* ================> solar panels <================*/
-
-.section-solar-panels {
-
-    background-image: url(assets/solar-panel-bg.jpg);
-
-}
-
-
-
-.section-accessories {
-
-    background-image: url(assets/acessories-bg.jpg);
-
-}
-
-
 /* ==========================> media querry <========================== */
 
 @media (min-width: 640px) and (max-width: 1200px) {
@@ -498,64 +456,5 @@ main section {
             flex-basis: 100%;
             margin-bottom: 15px;
         }
-
-}
-
-@media (max-width: 910px){
-
-
-/* ================> model s <================*/
-
-.section-model-s {
-
-    background-image: url(assets/model-s-bg-m.jpg);
-
-}
-
-/* ================> model 3 <================*/
-
-.section-model-3 {
-
-    background-image: url(assets/model-3-bg-m.jpg);
-
-}
-
-/* ================> model x <================*/
-
-.section-model-x {
-
-    background-image: url(assets/model-x-bg-m.jpg);
-
-}
-
-/* ================> model y <================*/
-
-.section-model-y {
-
-    background-image: url(assets/model-y-bg-m.jpg);
-
-}
-
-/* ================> solar roof <================*/
-
-.section-solar-roof {
-
-    background-image: url(assets/solar-roof-bg-m.jpg);
-
-}
-
-/* ================> solar panels <================*/
-
-.section-solar-panels {
-
-    background-image: url(assets/solar-panel-bg-m.jpg);
-
-}
-
-.section-accessories {
-
-    background-image: url(assets/acessories-bg-m.jpg);
-
-}
 
 }

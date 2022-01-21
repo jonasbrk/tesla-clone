@@ -100,7 +100,7 @@ main.addEventListener('scroll', () => {
     
             <div class="model-wrapper">
                 <h2 class="model-title">${modelInfo.model}</h2>
-                <h3 class="model-description">Order Online for <a>Touchless Delivery</a></h3>
+                <h3 class="model-description">Order Online for <a href="#">Touchless Delivery</a></h3>
             </div>
             <div class="button-wrapper">
                 <a href="#">CUSTOM ORDER</a>
@@ -109,11 +109,12 @@ main.addEventListener('scroll', () => {
 
             let iniAnimationItens = document.querySelectorAll('header, .model-title, .model-description, .button-wrapper a:nth-child(1), .button-wrapper a:nth-child(2)')
 
-            console.log(iniAnimationItens)
+
             iniAnimationItens.forEach(item => {
 
                 item.classList.add('animation-none')
             });
+
         }
     }
 })
