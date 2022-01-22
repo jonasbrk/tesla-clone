@@ -122,11 +122,14 @@ main.addEventListener('scroll', () => {
 
 
 
+///////////////SIDE MENU///////////////
 
 
+// const sideMenu = document.querySelector('.sidebar')
+// const sideMenuButton = document.querySelector('#side-menu-button')
 
 
-
+// sideMenuButton.addEventListener("click", sideMenu.showModal())
 
 
 
