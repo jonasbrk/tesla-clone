@@ -125,11 +125,31 @@ main.addEventListener('scroll', () => {
 ///////////////SIDE MENU///////////////
 
 
-// const sideMenu = document.querySelector('.sidebar')
-// const sideMenuButton = document.querySelector('#side-menu-button')
+const sideMenu = document.querySelector('.sidebar')
+const sideMenuBg = document.querySelector('.menu-bg-overlay')
+const sideMenuOpenButton = document.querySelector('#side-menu-button')
+const sideMenuCloseButton = document.querySelector('.close-button')
 
 
-// sideMenuButton.addEventListener("click", sideMenu.showModal())
+sideMenuOpenButton.addEventListener("click", () => {
+
+    sideMenu.classList.add('open-sidebar')
+    sideMenuBg.classList.add('open-menu-bg-overlay')
+
+
+})
+sideMenuBg.addEventListener('click', () => {
+
+    sideMenu.classList.remove('open-sidebar')
+    sideMenuBg.classList.remove('open-menu-bg-overlay')
+
+})
+sideMenuCloseButton.addEventListener('click', () => {
+
+    sideMenu.classList.remove('open-sidebar')
+    sideMenuBg.classList.remove('open-menu-bg-overlay')
+
+})
 
 
 
