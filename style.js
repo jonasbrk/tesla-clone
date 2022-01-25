@@ -3,8 +3,11 @@ const header = document.querySelector('header');
 const main = document.querySelector('main');
 const body = document.querySelector('body');
 const headerCentral = document.querySelector('.header-wrapper .container-central-menu')
-import modelsData from "./data.js";
-// const model = document.querySelectorAll('#models div');
+import { modelsData } from "./data.js";
+import { sideMenuData } from "./data.js";
+
+
+
 const easeInOutCubic = (t) => {
     return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 };
@@ -124,34 +127,269 @@ main.addEventListener('scroll', () => {
 
 ///////////////SIDE MENU///////////////
 
-
 const sideMenu = document.querySelector('.sidebar')
 const sideMenuBg = document.querySelector('.menu-bg-overlay')
 const sideMenuOpenButton = document.querySelector('#side-menu-button')
-const sideMenuCloseButton = document.querySelector('.close-button')
-
+const sideMenuCloseWays = document.querySelectorAll('.close-button, .menu-bg-overlay')
+let sideMenuBool = false
 
 sideMenuOpenButton.addEventListener("click", () => {
 
     sideMenu.classList.add('open-sidebar')
     sideMenuBg.classList.add('open-menu-bg-overlay')
-
-
-})
-sideMenuBg.addEventListener('click', () => {
-
-    sideMenu.classList.remove('open-sidebar')
-    sideMenuBg.classList.remove('open-menu-bg-overlay')
-
-})
-sideMenuCloseButton.addEventListener('click', () => {
-
-    sideMenu.classList.remove('open-sidebar')
-    sideMenuBg.classList.remove('open-menu-bg-overlay')
-
+    sideMenuBool = true
 })
 
 
+sideMenuCloseWays.forEach(e => {
+
+    e.addEventListener('click', () => {
+
+        sideMenu.classList.remove('open-sidebar')
+        sideMenuBg.classList.remove('open-menu-bg-overlay')
+        sideMenuBool = false
+    })
+
+
+})
+
+
+
+
+/////////SIDE MENU ITEMS GENERATOR/////////
+
+if (sideMenuBool == false) {
+
+
+
+    let sideMenuItens = sideMenuData.sort((a, b) => a.category.localeCompare(b.category))
+    let sideMenuPag = document.querySelector('.sidebar-itens')
+
+    if (window.innerWidth > 1200) {
+
+        sideMenuItens.forEach((element, index, array) => {
+
+            let li = document.createElement('li');
+
+
+            li.innerHTML = `
+            <a href='#'> <span>${sideMenuItens[index].name}</span></a>
+            `;
+            sideMenuPag.appendChild(li)
+        })
+        
+        
+        
+        
+        createLangbutton.innerHTML = `
+        <a href="#" class="lang-selector">
+                    <div class="lang-icon"><img src="assets/world-icon.svg" alt=""></div>
+                    <div class="lang-info"><span class="country">United States</span>
+                        <span class="language">English</span>
+                    </div>
+                </a>`;
+                sideMenuPag.appendChild(createLangbutton)
+
+    }
+
+
+    let fullSideMenuData = sideMenuItens.concat(modelsData)
+
+    let fullSideMenuItems = fullSideMenuData.sort((a, b) => a.category.localeCompare(b.category))
+
+    let sideMenuPagItems = document.querySelectorAll('.sidebar-itens li')
+
+    if (fullSideMenuItems.length > 20) {
+
+        let createSideMenuPag2 = document.createElement('ul')
+            createSideMenuPag2.classList.add('sidebar-itens')
+            createSideMenuPag2.setAttribute('id', 'sidebar-pg-2')
+            createSideMenuPag2.style.display = "none"
+            sideMenu.appendChild(createSideMenuPag2)
+
+            const SideMenuPag2 = document.querySelector('#sidebar-pg-2')
+
+            console.log(fullSideMenuItems)
+        fullSideMenuItems.forEach((element, index, array) => {
+            let li = document.createElement('li');
+
+            if (index <= 17) {
+                li.innerHTML = `
+        <a href='#'> <span>${fullSideMenuItems[index].name}</span></a>
+        `;
+                sideMenuPag.appendChild(li)
+
+            }
+        if (index > 17) {
+    
+    
+            li.innerHTML = `
+            <a href='#'> <span>${fullSideMenuItems[index].name}</span></a>
+            `;
+            SideMenuPag2.appendChild(li)
+        }
+
+
+        })
+        
+    
+        let createMoreButton = document.createElement('li');
+        let createLangbutton = document.createElement('li');
+    
+        createMoreButton.innerHTML = `
+        <a href='#' class="menu-more"> More <img src="assets/arrow-rigth.svg" alt=""></a>
+        `;
+
+        createLangbutton.innerHTML = `
+        <a href="#" class="lang-selector">
+                    <div class="lang-icon"><img src="assets/world-icon.svg" alt=""></div>
+                    <div class="lang-info"><span class="country">United States</span>
+                        <span class="language">English</span>
+                    </div>
+                </a>`;
+        sideMenuPag.appendChild(createMoreButton)
+        sideMenuPag.appendChild(createLangbutton)
+
+        let MoreButton = document.querySelector('.menu-more')
+        let backButton = document.querySelector('.sidebar-back-button')
+
+        MoreButton.addEventListener('click', () => {
+
+            sideMenuPag.style.display = 'none'
+            SideMenuPag2.style.display = 'initial'
+            backButton.style.visibility = 'inherit'
+
+        })
+
+        backButton.addEventListener('click', () => {
+
+            sideMenuPag.style.display = 'initial'
+            SideMenuPag2.style.display = 'none'
+            backButton.style.visibility = 'hidden'
+            
+        })
+        
+
+
+    }}
+
+
+
+
+
+
+        // modelsData.forEach((element, index, array) => {
+        //     let li = document.createElement('li');
+        //     li.innerHTML = `
+        //     <a href='#'> <span>${modelsData[index].model}</span></a>
+        //     `;
+        //     sideMenuPag.appendChild(li)
+        // })
+
+        // sideMenuItens.forEach((element, index, array) => {
+        //     let sideMenuPagItems = document.querySelectorAll('.sidebar-itens li')
+        //     let li = document.createElement('li');
+
+
+        //     li.innerHTML = `
+        //     <a href='#'> <span>${sideMenuItens[index].name}</span></a>
+        //     `;
+        //     sideMenuPag.appendChild(li)
+        // })
+    
+
+
+
+ // sideMenuItens.forEach((element, index, array) => {
+        //         let sideMenuPag = document.querySelector('.sidebar-itens')
+        //         let sideMenuPagItems = document.querySelectorAll('.sidebar-itens li')
+
+        //         let li = document.createElement('li');
+
+        //         let liGenerator = (parent, data, index) => {
+
+        //             li.innerHTML = `
+        //         <a href='#'> <span>${data[index].name}</span></a>
+        //         `;
+        //             parent.appendChild(li)
+
+        //         }
+        //         if () {
+        //             if (sideMenuPagItems.length <= 20 && element.screen == 'pc') {
+
+        //                 liGenerator(sideMenuPag, sideMenuItens, index)
+
+        //             }
+
+        //         }
+
+
+        // if (sideMenuPagItems.length <= 20) {
+
+
+        //     liGenerator(sideMenuPag, sideMenuItens, index)
+
+        // }
+
+
+
+
+
+
+
+
+        // if (sideMenuPagItems.length <= 20) {
+
+        //     li.innerHTML = `
+        //     //     <a href='#' class="menu-more"> More <img src="assets/arrow-rigth.svg" alt=""></a>
+        //     //     `;
+        //     //     sideMenuItems.appendChild(li)
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+        // if (window.innerWidth < 1200) {
+
+        //     modelsData.forEach((element, index, array) => {
+
+        //         li.innerHTML = `
+        //         <a href='#'> <span>${modelsData[index].name}</span></a>
+        //         `;
+        //         sideMenuPag.appendChild(li)
+
+        //     })
+
+
+        // if (sideMenuPagItems.length <= 20 && element.screen == 'pc') {
+
+        //     li.innerHTML = `
+        //     <a href='#'> <span>${sideMenuData[index].name}</span></a>
+        //     `;
+        //     sideMenuPag.appendChild(li)
+
+        // }
+
+        // if (sideMenuPagItems.length == 21) {
+
+        //     li.innerHTML = `
+        //     <a href='#' class="menu-more"> More <img src="assets/arrow-rigth.svg" alt=""></a>
+        //     `;
+        //     sideMenuItems.appendChild(li)
+
+        //     console.log('cu')
+        // }
+
+
+        // }
 
 
 

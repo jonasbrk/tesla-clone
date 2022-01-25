@@ -175,6 +175,7 @@ opacity: 0;
     background-color: white;
     z-index: 10000;
     display: flex;
+    flex-direction: column;
     transition: transform 0.5s ease, opacity 0.5s ease, visibility, 0.5s;
     align-items: center;
     transform: translateX(50%);
@@ -191,10 +192,41 @@ opacity: 0;
     
 }
 
+.sidebar-header {
+
+    height: 65px;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.sidebar-header .sidebar-back-button {
+
+display: flex;
+align-items: center;
+visibility: hidden;
+cursor: pointer;
+
+}
+
+.sidebar-header .sidebar-back-button img {
+
+    height: 14px;
+    transform: rotate(180deg);
+    margin-right: 5px;
+
+}
+
+
 .sidebar ul {
     
     height: 80%;
     width: 100%;
+    box-sizing: border-box;
     padding-right: 30px;
     display: flex;
     flex-direction: column;
@@ -283,9 +315,6 @@ justify-content: space-between;
 
 .close-button {
 
-    position: absolute;
-    top: 30px;
-    right: 30px;
     height: 40px;
     width: 40px;
     padding: 10px;
