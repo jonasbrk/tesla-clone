@@ -131,41 +131,29 @@ const sideMenu = document.querySelector('.sidebar')
 const sideMenuBg = document.querySelector('.menu-bg-overlay')
 const sideMenuOpenButton = document.querySelector('#side-menu-button')
 const sideMenuCloseWays = document.querySelectorAll('.close-button, .menu-bg-overlay')
-let sideMenuBool = false
-
-sideMenuOpenButton.addEventListener("click", () => {
-
-    sideMenu.classList.add('open-sidebar')
-    sideMenuBg.classList.add('open-menu-bg-overlay')
-    sideMenuBool = true
-})
+let sideMenuBool = "false"
+let sideMenuResponsiveBool = ""
 
 
-sideMenuCloseWays.forEach(e => {
-
-    e.addEventListener('click', () => {
-
-        sideMenu.classList.remove('open-sidebar')
-        sideMenuBg.classList.remove('open-menu-bg-overlay')
-        sideMenuBool = false
-    })
-
-
-})
 
 
 
 
 /////////SIDE MENU ITEMS GENERATOR/////////
 
-if (sideMenuBool == false) {
-
-
-
     let sideMenuItens = sideMenuData.sort((a, b) => a.category.localeCompare(b.category))
-    let sideMenuPag = document.querySelector('.sidebar-itens')
+    let sideMenuPag1 = document.querySelector('#sidebar-pg-1')
+    let sideMenuPag2 = document.querySelector('#sidebar-pg-2')
 
-    if (window.innerWidth > 1200) {
+    let windowWidth = window.innerWidth
+
+    function sideMenuF()  {
+
+        if (sideMenuResponsiveBool != "false") {
+            
+            sideMenuPag1.innerHTML = ''
+            sideMenuPag2.innerHTML = ''
+            
 
         sideMenuItens.forEach((element, index, array) => {
 
@@ -175,12 +163,25 @@ if (sideMenuBool == false) {
             li.innerHTML = `
             <a href='#'> <span>${sideMenuItens[index].name}</span></a>
             `;
-            sideMenuPag.appendChild(li)
+            sideMenuPag1.appendChild(li)
         })
         
         
         
         
+        // createLangbutton.innerHTML = `
+        // <a href="#" class="lang-selector">
+        //             <div class="lang-icon"><img src="assets/world-icon.svg" alt=""></div>
+        //             <div class="lang-info"><span class="country">United States</span>
+        //                 <span class="language">English</span>
+        //             </div>
+        //         </a>`;
+        //         sideMenuPag.appendChild(createLangbutton)
+    
+        console.log(sideMenuResponsiveBool)
+
+        let createLangbutton = document.createElement('li');
+
         createLangbutton.innerHTML = `
         <a href="#" class="lang-selector">
                     <div class="lang-icon"><img src="assets/world-icon.svg" alt=""></div>
@@ -188,8 +189,8 @@ if (sideMenuBool == false) {
                         <span class="language">English</span>
                     </div>
                 </a>`;
-                sideMenuPag.appendChild(createLangbutton)
-
+        sideMenuPag1.appendChild(createLangbutton)
+    }
     }
 
 
@@ -199,17 +200,16 @@ if (sideMenuBool == false) {
 
     let sideMenuPagItems = document.querySelectorAll('.sidebar-itens li')
 
+    function fullSideMenuF() {
+        
+        if (sideMenuResponsiveBool != "true") {
+            
+            sideMenuPag1.innerHTML = ''
+            sideMenuPag2.innerHTML = ''
+    
     if (fullSideMenuItems.length > 20) {
 
-        let createSideMenuPag2 = document.createElement('ul')
-            createSideMenuPag2.classList.add('sidebar-itens')
-            createSideMenuPag2.setAttribute('id', 'sidebar-pg-2')
-            createSideMenuPag2.style.display = "none"
-            sideMenu.appendChild(createSideMenuPag2)
 
-            const SideMenuPag2 = document.querySelector('#sidebar-pg-2')
-
-            console.log(fullSideMenuItems)
         fullSideMenuItems.forEach((element, index, array) => {
             let li = document.createElement('li');
 
@@ -217,7 +217,7 @@ if (sideMenuBool == false) {
                 li.innerHTML = `
         <a href='#'> <span>${fullSideMenuItems[index].name}</span></a>
         `;
-                sideMenuPag.appendChild(li)
+                sideMenuPag1.appendChild(li)
 
             }
         if (index > 17) {
@@ -226,7 +226,7 @@ if (sideMenuBool == false) {
             li.innerHTML = `
             <a href='#'> <span>${fullSideMenuItems[index].name}</span></a>
             `;
-            SideMenuPag2.appendChild(li)
+            sideMenuPag2.appendChild(li)
         }
 
 
@@ -247,34 +247,69 @@ if (sideMenuBool == false) {
                         <span class="language">English</span>
                     </div>
                 </a>`;
-        sideMenuPag.appendChild(createMoreButton)
-        sideMenuPag.appendChild(createLangbutton)
+        sideMenuPag1.appendChild(createMoreButton)
+        sideMenuPag1.appendChild(createLangbutton)
 
         let MoreButton = document.querySelector('.menu-more')
         let backButton = document.querySelector('.sidebar-back-button')
 
         MoreButton.addEventListener('click', () => {
 
-            sideMenuPag.style.display = 'none'
-            SideMenuPag2.style.display = 'initial'
+            sideMenuPag1.style.display = 'none'
+            sideMenuPag2.style.display = 'initial'
             backButton.style.visibility = 'inherit'
 
         })
 
         backButton.addEventListener('click', () => {
 
-            sideMenuPag.style.display = 'initial'
-            SideMenuPag2.style.display = 'none'
+            sideMenuPag1.style.display = 'initial'
+            sideMenuPag2.style.display = 'none'
             backButton.style.visibility = 'hidden'
             
         })
         
 
 
-    }}
+    }
+console.log(sideMenuResponsiveBool)
+
+}
+}
 
 
 
+
+sideMenuOpenButton.addEventListener("click", () => {
+
+    if(window.innerWidth > 1200){
+
+        sideMenuF()
+        sideMenuResponsiveBool = "false" 
+    }
+    else{
+
+        fullSideMenuF()
+        sideMenuResponsiveBool = "true" 
+
+    }
+    sideMenu.classList.add('open-sidebar')
+    sideMenuBg.classList.add('open-menu-bg-overlay')
+    sideMenuBool = true
+})
+
+
+sideMenuCloseWays.forEach(e => {
+
+    e.addEventListener('click', () => {
+
+        sideMenu.classList.remove('open-sidebar')
+        sideMenuBg.classList.remove('open-menu-bg-overlay')
+        sideMenuBool = "false"
+    })
+
+
+})
 
 
 
