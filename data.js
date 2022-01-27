@@ -6,7 +6,7 @@ export const modelsData = [
 
     {
         id: "model-3",
-        model: "Model 3",
+        name: "Model 3",
         price: "39,940",
         autonomy: "267",
         topSpeed: "140",
@@ -16,7 +16,7 @@ export const modelsData = [
     },
     {
         id: "model-y",
-        model: "Model Y",
+        name: "Model Y",
         price: "53,940",
         autonomy: "318",
         topSpeed: "135",
@@ -26,7 +26,7 @@ export const modelsData = [
     },
     {
         id: "model-s",
-        model: "Model S",
+        name: "Model S",
         price: "88,740",
         autonomy: "375",
         topSpeed: "155",
@@ -36,7 +36,7 @@ export const modelsData = [
     },
     {
         id: "model-x",
-        model: "Model X",
+        name: "Model X",
         price: "98,940",
         autonomy: "332",
         topSpeed: "155",
@@ -46,21 +46,21 @@ export const modelsData = [
     },
     {
         id: "solar-panels",
-        model: "Solar Panels",
+        name: "Solar Panels",
         imageBg: "assets/solar-panel-bg.jpg",
         imageBgMobile: "assets/solar-panel-bg-m.jpg",
         category: "1-1-model",
     },
     {
         id: "solar-roof",
-        model: "Solar Roof",
+        name: "Solar Roof",
         imageBg: "assets/solar-roof-bg.jpg",
         imageBgMobile: "assets/solar-roof-bg-m.jpg",
         category: "1-1-model",
     },
     {
         id: "accessories",
-        model: "Accessories",
+        name: "Accessories",
         imageBg: "assets/acessories-bg.jpg",
         imageBgMobile: "assets/acessories-bg-m.jpg",
         category: "1-1-model",

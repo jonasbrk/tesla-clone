@@ -35,7 +35,7 @@ modelsData.forEach((element, index, array) => {
 
     /////////CENTRAL MENU/////////
 
-    a.innerHTML = `<span>${modelsData[index].model}</span>`
+    a.innerHTML = `<span>${modelsData[index].name}</span>`
     a.setAttribute('href', `#${modelsData[index].id}`)
     headerCentral.appendChild(a)
 
@@ -102,7 +102,7 @@ main.addEventListener('scroll', () => {
             modelReveal.children[0].innerHTML = `                
     
             <div class="model-wrapper">
-                <h2 class="model-title">${modelInfo.model}</h2>
+                <h2 class="model-title">${modelInfo.name}</h2>
                 <h3 class="model-description">Order Online for <a href="#">Touchless Delivery</a></h3>
             </div>
             <div class="button-wrapper">
@@ -130,338 +130,118 @@ main.addEventListener('scroll', () => {
 const sideMenu = document.querySelector('.sidebar')
 const sideMenuBg = document.querySelector('.menu-bg-overlay')
 const sideMenuOpenButton = document.querySelector('#side-menu-button')
-const sideMenuCloseWays = document.querySelectorAll('.close-button, .menu-bg-overlay')
+const sideMenuItens = sideMenuData.sort((a, b) => a.category.localeCompare(b.category))
 let sideMenuBool = "false"
 let sideMenuResponsiveBool = ""
 
+const createMenuItens = (type, innerHTML, parent, atributeType, atribute) => {
+    let createMenuItens = document.createElement(type);
+    createMenuItens.innerHTML = innerHTML;
+    if (atributeType != '') { createMenuItens.setAttribute(atributeType, atribute) }
+    parent.appendChild(createMenuItens)
+}
 
+sideMenuOpenButton.addEventListener('click', () => {
 
+    if (window.innerWidth > 1200 && sideMenuBool == 'false' && sideMenuResponsiveBool != "false") {
+        sideMenu.innerHTML = `
+        <div class="sidebar-header"><span class="sidebar-back-button"><img src="assets/arrow-rigth.svg">Back</span><img src="assets/close-button.svg" class="close-button"></img></div> 
+     `
 
-
-
-/////////SIDE MENU ITEMS GENERATOR/////////
-
-    let sideMenuItens = sideMenuData.sort((a, b) => a.category.localeCompare(b.category))
-    let sideMenuPag1 = document.querySelector('#sidebar-pg-1')
-    let sideMenuPag2 = document.querySelector('#sidebar-pg-2')
-
-    let windowWidth = window.innerWidth
-
-    function sideMenuF()  {
-
-        if (sideMenuResponsiveBool != "false") {
-            
-            sideMenuPag1.innerHTML = ''
-            sideMenuPag2.innerHTML = ''
-            
+        createMenuItens('ul', ``, sideMenu, 'id', 'sideMenuPag1')
+        let sideMenuPag1 = document.querySelector('#sideMenuPag1')
 
         sideMenuItens.forEach((element, index, array) => {
 
-            let li = document.createElement('li');
+            if (element.screen == "pc") {
 
-
-            li.innerHTML = `
-            <a href='#'> <span>${sideMenuItens[index].name}</span></a>
-            `;
-            sideMenuPag1.appendChild(li)
-        })
-        
-        
-        
-        
-        // createLangbutton.innerHTML = `
-        // <a href="#" class="lang-selector">
-        //             <div class="lang-icon"><img src="assets/world-icon.svg" alt=""></div>
-        //             <div class="lang-info"><span class="country">United States</span>
-        //                 <span class="language">English</span>
-        //             </div>
-        //         </a>`;
-        //         sideMenuPag.appendChild(createLangbutton)
-    
-        console.log(sideMenuResponsiveBool)
-
-        let createLangbutton = document.createElement('li');
-
-        createLangbutton.innerHTML = `
-        <a href="#" class="lang-selector">
-                    <div class="lang-icon"><img src="assets/world-icon.svg" alt=""></div>
-                    <div class="lang-info"><span class="country">United States</span>
-                        <span class="language">English</span>
-                    </div>
-                </a>`;
-        sideMenuPag1.appendChild(createLangbutton)
-    }
-    }
-
-
-    let fullSideMenuData = sideMenuItens.concat(modelsData)
-
-    let fullSideMenuItems = fullSideMenuData.sort((a, b) => a.category.localeCompare(b.category))
-
-    let sideMenuPagItems = document.querySelectorAll('.sidebar-itens li')
-
-    function fullSideMenuF() {
-        
-        if (sideMenuResponsiveBool != "true") {
-            
-            sideMenuPag1.innerHTML = ''
-            sideMenuPag2.innerHTML = ''
-    
-    if (fullSideMenuItems.length > 20) {
-
-
-        fullSideMenuItems.forEach((element, index, array) => {
-            let li = document.createElement('li');
-
-            if (index <= 17) {
-                li.innerHTML = `
-        <a href='#'> <span>${fullSideMenuItems[index].name}</span></a>
-        `;
-                sideMenuPag1.appendChild(li)
+                createMenuItens('li', `<a href='#'> <span>${element.name}</span></a>`, sideMenuPag1, '')
 
             }
-        if (index > 17) {
-    
-    
-            li.innerHTML = `
-            <a href='#'> <span>${fullSideMenuItems[index].name}</span></a>
-            `;
-            sideMenuPag2.appendChild(li)
-        }
-
-
         })
-        
-    
-        let createMoreButton = document.createElement('li');
-        let createLangbutton = document.createElement('li');
-    
-        createMoreButton.innerHTML = `
-        <a href='#' class="menu-more"> More <img src="assets/arrow-rigth.svg" alt=""></a>
-        `;
 
-        createLangbutton.innerHTML = `
-        <a href="#" class="lang-selector">
-                    <div class="lang-icon"><img src="assets/world-icon.svg" alt=""></div>
-                    <div class="lang-info"><span class="country">United States</span>
-                        <span class="language">English</span>
-                    </div>
-                </a>`;
-        sideMenuPag1.appendChild(createMoreButton)
-        sideMenuPag1.appendChild(createLangbutton)
+        createMenuItens('li', `<a href="#" class="lang-selector">
+            <div class="lang-icon"><img src="assets/world-icon.svg" alt=""></div>
+            <div class="lang-info"><span class="country">United States</span>
+                <span class="language">English</span>
+            </div>
+            </a>`, sideMenuPag1, '')
 
-        let MoreButton = document.querySelector('.menu-more')
-        let backButton = document.querySelector('.sidebar-back-button')
+        sideMenuResponsiveBool = 'false'
+    }
+
+    if (window.innerWidth < 1200 && sideMenuBool == 'false' && sideMenuResponsiveBool != "true") {
+        sideMenu.innerHTML = `
+        <div class="sidebar-header"><span class="sidebar-back-button"><img src="assets/arrow-rigth.svg">Back</span><img src="assets/close-button.svg" class="close-button"></img></div>
+     `
+
+        createMenuItens('ul', ``, sideMenu, 'id', 'sideMenuPag1')
+        createMenuItens('ul', ``, sideMenu, 'id', 'sideMenuPag2')
+        let sideMenuPag1 = document.querySelector('#sideMenuPag1')
+        let sideMenuPag2 = document.querySelector('#sideMenuPag2')
+        sideMenuPag2.style.display = 'none'
+
+        let fullSideMenuData = sideMenuItens.concat(modelsData)
+        let fullSideMenuItems = fullSideMenuData.sort((a, b) => a.category.localeCompare(b.category))
+        fullSideMenuItems.forEach((element, index, array) => {
+
+            if (index <= 18) {
+                createMenuItens('li', `<a href='#'> <span>${element.name}</span></a>`, sideMenuPag1, '')
+            }
+
+            if (index > 18) {
+                createMenuItens('li', `<a href='#'> <span>${element.name}</span></a>`, sideMenuPag2, '')
+
+            }
+        })
+
+        createMenuItens('li', `<a href='#' class="menu-more"> More <img src="assets/arrow-rigth.svg" alt=""></a>`, sideMenuPag1, '')
+
+        createMenuItens('li', `<a href="#" class="lang-selector">
+        <div class="lang-icon"><img src="assets/world-icon.svg" alt=""></div>
+        <div class="lang-info"><span class="country">United States</span>
+            <span class="language">English</span>
+        </div>
+        </a>`, sideMenuPag1, '')
+
+        createMenuItens('li', `<a href="#" class="lang-selector">
+        <div class="lang-icon"><img src="assets/world-icon.svg" alt=""></div>
+        <div class="lang-info"><span class="country">United States</span>
+            <span class="language">English</span>
+        </div>
+        </a>`, sideMenuPag2, '')
+
+        sideMenuResponsiveBool = 'true'
+
+        const MoreButton = document.querySelector('.menu-more')
+        const backButton = document.querySelector('.sidebar-back-button')
 
         MoreButton.addEventListener('click', () => {
-
             sideMenuPag1.style.display = 'none'
-            sideMenuPag2.style.display = 'initial'
+            sideMenuPag2.style.display = 'inherit'
             backButton.style.visibility = 'inherit'
-
         })
-
         backButton.addEventListener('click', () => {
-
-            sideMenuPag1.style.display = 'initial'
+            sideMenuPag1.style.display = 'inherit'
             sideMenuPag2.style.display = 'none'
             backButton.style.visibility = 'hidden'
-            
         })
-        
-
-
     }
-console.log(sideMenuResponsiveBool)
 
-}
-}
-
-
-
-
-sideMenuOpenButton.addEventListener("click", () => {
-
-    if(window.innerWidth > 1200){
-
-        sideMenuF()
-        sideMenuResponsiveBool = "false" 
-    }
-    else{
-
-        fullSideMenuF()
-        sideMenuResponsiveBool = "true" 
-
-    }
+    const sideMenuCloseWays = document.querySelectorAll('.close-button, .menu-bg-overlay')
+    sideMenuBool = 'true'
     sideMenu.classList.add('open-sidebar')
     sideMenuBg.classList.add('open-menu-bg-overlay')
-    sideMenuBool = true
-})
 
+    sideMenuCloseWays.forEach(e => {
 
-sideMenuCloseWays.forEach(e => {
+        e.addEventListener('click', () => {
 
-    e.addEventListener('click', () => {
+            sideMenu.classList.remove('open-sidebar')
+            sideMenuBg.classList.remove('open-menu-bg-overlay')
+            sideMenuBool = "false"
+        })
 
-        sideMenu.classList.remove('open-sidebar')
-        sideMenuBg.classList.remove('open-menu-bg-overlay')
-        sideMenuBool = "false"
     })
 
-
 })
-
-
-
-        // modelsData.forEach((element, index, array) => {
-        //     let li = document.createElement('li');
-        //     li.innerHTML = `
-        //     <a href='#'> <span>${modelsData[index].model}</span></a>
-        //     `;
-        //     sideMenuPag.appendChild(li)
-        // })
-
-        // sideMenuItens.forEach((element, index, array) => {
-        //     let sideMenuPagItems = document.querySelectorAll('.sidebar-itens li')
-        //     let li = document.createElement('li');
-
-
-        //     li.innerHTML = `
-        //     <a href='#'> <span>${sideMenuItens[index].name}</span></a>
-        //     `;
-        //     sideMenuPag.appendChild(li)
-        // })
-    
-
-
-
- // sideMenuItens.forEach((element, index, array) => {
-        //         let sideMenuPag = document.querySelector('.sidebar-itens')
-        //         let sideMenuPagItems = document.querySelectorAll('.sidebar-itens li')
-
-        //         let li = document.createElement('li');
-
-        //         let liGenerator = (parent, data, index) => {
-
-        //             li.innerHTML = `
-        //         <a href='#'> <span>${data[index].name}</span></a>
-        //         `;
-        //             parent.appendChild(li)
-
-        //         }
-        //         if () {
-        //             if (sideMenuPagItems.length <= 20 && element.screen == 'pc') {
-
-        //                 liGenerator(sideMenuPag, sideMenuItens, index)
-
-        //             }
-
-        //         }
-
-
-        // if (sideMenuPagItems.length <= 20) {
-
-
-        //     liGenerator(sideMenuPag, sideMenuItens, index)
-
-        // }
-
-
-
-
-
-
-
-
-        // if (sideMenuPagItems.length <= 20) {
-
-        //     li.innerHTML = `
-        //     //     <a href='#' class="menu-more"> More <img src="assets/arrow-rigth.svg" alt=""></a>
-        //     //     `;
-        //     //     sideMenuItems.appendChild(li)
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-        // if (window.innerWidth < 1200) {
-
-        //     modelsData.forEach((element, index, array) => {
-
-        //         li.innerHTML = `
-        //         <a href='#'> <span>${modelsData[index].name}</span></a>
-        //         `;
-        //         sideMenuPag.appendChild(li)
-
-        //     })
-
-
-        // if (sideMenuPagItems.length <= 20 && element.screen == 'pc') {
-
-        //     li.innerHTML = `
-        //     <a href='#'> <span>${sideMenuData[index].name}</span></a>
-        //     `;
-        //     sideMenuPag.appendChild(li)
-
-        // }
-
-        // if (sideMenuPagItems.length == 21) {
-
-        //     li.innerHTML = `
-        //     <a href='#' class="menu-more"> More <img src="assets/arrow-rigth.svg" alt=""></a>
-        //     `;
-        //     sideMenuItems.appendChild(li)
-
-        //     console.log('cu')
-        // }
-
-
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*function reveal() {
-    let reveals = document.querySelectorAll('#models');
-    let revealtop = reveals[0].getBoundingClientRect().top;
-    let screenindex = (revealtop + 0.4444580078125) / window.innerHeight;
-    let screenopacitycalc = Math.abs(screenindex.toFixed(2)) % 1;
-    let screenopacity = Math.abs(1 - (screenopacitycalc.toFixed(2) * 2))
-
-    for (let i = 0; i < model.length; i++) {
-
-        if (easeInOutCubic(screenopacity) > 0 && i == Math.abs(Math.round(screenindex))) {
-
-            var revealsIndex = i
-            reveals[Math.abs(Math.round(screenindex))].children[0].style.display = "flex"
-            reveals[Math.abs(Math.round(screenindex))].children[1].style.display = "flex"
-            reveals[Math.abs(Math.round(screenindex))].children[0].style.opacity = easeInOutCubic(screenopacity);
-            reveals[Math.abs(Math.round(screenindex))].children[1].style.opacity = easeInOutCubic(screenopacity);
-
-        }
-        if (revealsIndex != Math.abs(Math.round(screenindex)) && revealsIndex != Math.abs(Math.round(screenindex)) + 1) {
-
-            for (let i = 0; i < model.length; i++) {
-                model[i].style.display = "none"
-            }
-        }
-    }
-}
-*/
