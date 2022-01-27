@@ -316,7 +316,7 @@ justify-content: space-between;
 
 }
 
-.close-button {
+.close-button, .modal-close-btn {
 
     height: 40px;
     width: 40px;
@@ -331,11 +331,131 @@ justify-content: space-between;
 
 
 
-.sidebar ul li a:hover, .close-button:hover {
+.sidebar ul li a:hover, .close-button:hover, .modal-close-btn:hover {
 
     background-color: hsla(0,0%,0%,.05);
     backdrop-filter: blur(16px);
 }
+
+/* ==========================> SHOP MODAL <========================== */
+
+/**************** HEADER *****************/
+.shop-modal {
+
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    right: 10%;
+    top: 10%;
+    height: 80%;
+    width: 80%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: white;
+    z-index: 99999;
+
+}
+
+.shop-modal .shop-header {
+
+    width: 100%;
+    flex-basis: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 15px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shop-modal .header-section {
+    flex-basis: 100%;
+    display: flex;
+    height: 50%;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.shop-modal .header-section .shop-title {
+
+    margin: 0;
+    font-size: 34px;
+}
+
+.shop-modal .header-search {
+
+    height: 50%;
+    flex-basis: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+
+/**************** MAIN *****************/
+
+
+.shop-main {
+    flex-basis: 90%;
+    display: flex;
+    padding: 0 15px;
+    margin-top: 15px;
+    box-sizing: border-box;
+    background-color: rgb(228, 228, 228);
+    border-radius: 10px;
+
+}
+
+.shop-main .shop-side-section {
+
+height: 85%;
+width: 30%;
+background-color: white;
+position: absolute;
+right: 0;
+}
+
+.shop-main .shop-results{
+
+    flex-basis: 70%;
+    display: flex;
+    padding: 15px 0;
+    box-sizing: border-box;
+}
+
+.shop-main .shop-results .shop-item{
+
+    flex-basis: 33%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+
+
+}
+
+.shop-main .shop-results .shop-item .item-img {
+
+    flex-basis: 20%;
+
+
+}
+
+.shop-main .shop-results .shop-item .item-img img {
+
+    width: 100%;
+
+}
+
+
+
+
 
 
 
