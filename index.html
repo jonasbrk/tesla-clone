@@ -43,9 +43,9 @@
                 <img src="assets/close-button.svg" class="modal-close-btn">
             </div>
             <div class="header-search">
-                <input type="text" name="search-btn">
+
                 <span>Order by:</span>
-                <select name="order" id="">
+                <select class="order-by" name="order" id="">
                     <option value="featured">featured</option>
                     <option value="lower-price">Lower price</option>
                     <option value="highest-price">Highest price</option>
@@ -54,10 +54,27 @@
                 </select>
 
                 <span>Filter by:</span>
-                <div class="range-filter">
-                    <input type="range" name="" id="">
-                    <input type="range" name="" id="">
+                <div class="range-filter-wrapper">
+
+                    <div class="range-filter-value">
+                        <input type="number">
+                        <input type="number">
+                    </div>
+
+                    <div class="range-filter">
+
+                        <input type="range" name="slider" id="slider-1" min="0" max="100" value="30">
+                        <input type="range" name="slider" id="slider-2" min="0" max="100" value="70">
+
+                        <div class="range-slider">
+                            <div class="range-progress">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <input class="search-bar" type="text" name="search-btn" placeholder="Search Models">
             </div>
 
 
@@ -72,11 +89,58 @@
                     <div class="item-img"><img src="assets/model-3-shop.jpg" alt=""></div>
                     <div class="item-description">
 
+                        <span class="shop-model-title">Model 3</span>
+                        <span class="shop-model-price">$25.000</span>
                     </div>
-                    <input type="button" value="">
+                    <div class="item-buttons">
+                        <input class="shop-buy-button" type="button" value="Buy now">
+                        <input class="shop-add-cart-button" type="button" value="Add to Cart">
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="shop-side-section"><span class="shop-model-title">Model 3</span>
+                <div class="item-img"><img src="assets/model-3-shop.jpg" alt=""></div>
+                <div class="item-description">
+
+
+                    <div class="shop-model-position-1">
+                        <div class="shop-model-position-1-item shop-model-range">
+                            <span class="position-1-value">334<span class="position-1-unity">mi</span></span>
+                            <span class="position-1-type">Range (est.)</span>
+
+                        </div>
+                        <div class="shop-model-position-1-item shop-model-top-speed">
+                            <span class="position-1-value">145<span class="position-1-unity">mph</span></span>
+                            <span class="position-1-type">Top Speed</span>
+                        </div>
+                        <div class="shop-model-position-1-item shop-model-aceleration">
+                            <span class="position-1-value">4.2<span class="position-1-unity">sec</span></span>
+                            <span class="position-1-type">0-60 mph</span>
+                        </div>
+
+
+                    </div>
+                    <div class="shop-model-position-2">
+                        <p class="shop-model-description">
+
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed, vel veniam optio minima qui
+                            expedita corrupti saepe recusandae hic nam magnam, praesentium provident inventore! Voluptas
+                            aperiam minus illo numquam quos?
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+                <div class="item-buttons">
+                    <span>Order your Model 3</span>
+                    <input class="shop-buy-button" type="button" value="Continue to payment">
+                    <input class="shop-add-cart-button" type="button" value="Add to Cart">
                 </div>
             </div>
-            <div class="shop-side-section"></div>
 
         </div>
 
