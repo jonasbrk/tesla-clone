@@ -354,6 +354,18 @@ justify-content: space-between;
     border-radius: 10px;
     background-color: white;
     z-index: 99999;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: transform 0.5s ease, opacity 0.5s ease, visibility, 0.5s;
+
+}
+
+.shop-modal-open {
+
+    visibility: inherit;
+    opacity: 1;
+    transform: translateY(0px);
 
 }
 
@@ -423,13 +435,17 @@ justify-content: space-between;
     width: 10%;
     border: 1px solid #5c5e62;
     border-radius: 15px;
-    padding: 0 10px;
-    box-sizing: border-box;
+    padding-left: 10px;
 
+    text-align: left;
     color: #5c5e62;
     font-weight: 500;
     outline: none;
+}
 
+.shop-modal .header-search .order-by:focus{
+
+    width: 12%;
 
 
 }
@@ -538,11 +554,6 @@ top: -15px;
    }
 
 
-
-
-
-
-
 /**************** MAIN *****************/
 
 
@@ -554,6 +565,7 @@ top: -15px;
     box-sizing: border-box;
     background-color: rgb(228, 228, 228);
     border-radius: 10px;
+    
 
 }
 /**************** SIDE SECTION *****************/
@@ -561,14 +573,39 @@ top: -15px;
 
     height: 100%;
     width: 30%;
-    display: flex;
-    padding: 30px 15px 15px 15px;
+    display: none;
+    padding: 15px;
     box-sizing: border-box;
     flex-direction: column;
     background-color: white;
     position: relative;
     left: 30px;
 }
+
+
+.shop-side-section .side-section-top {
+
+    height: 30px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    }
+.shop-side-section .side-section-top img {
+    
+        height: 14px;
+        transform: rotate(180deg);
+        margin-right: 5px;
+    
+    }
+
+
+    .shop-side-section .side-section-top span {
+
+        font-size: 14px;
+        
+    }
 
 .shop-side-section .shop-model-title{
 
@@ -651,21 +688,28 @@ align-items: center;
 /**************** RESULTS *****************/
 .shop-main .shop-results{
 
-    flex-basis: 70%;
+    flex-basis: 100%;
+    height: 655px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     padding: 15px 0;
     box-sizing: border-box;
+    overflow-y: auto;
+
+
 }
 
 .shop-main .shop-results .shop-item{
 
-    flex-basis: 33%;
-    height: 50%;
+    flex-basis: 30%;
+    height: 48%;
     display: flex;
     flex-direction: column;
     background-color: white;
     border-radius: 10px;
     padding: 15px;
+    margin-right: 15px;
     box-sizing: border-box;
 
 
@@ -676,7 +720,7 @@ align-items: center;
 .shop-main .item-img {
 
     flex-basis: 40%;
-
+    height: 40%;
 
 }
 

@@ -12,6 +12,7 @@ export const modelsData = [
         topSpeed: "140",
         imageBg: "assets/model-3-bg.jpg",
         imageBgMobile: "assets/model-3-bg-m.jpg",
+        imageShop: "assets/model-3-shop.jpg",
         category: "1-1-model",
     },
     {
@@ -22,6 +23,7 @@ export const modelsData = [
         topSpeed: "135",
         imageBg: "assets/model-y-bg.jpg",
         imageBgMobile: "assets/model-y-bg-m.jpg",
+        imageShop: "assets/model-3-shop.jpg",
         category: "1-1-model",
     },
     {
@@ -32,6 +34,7 @@ export const modelsData = [
         topSpeed: "155",
         imageBg: "assets/model-s-bg.jpg",
         imageBgMobile: "assets/model-s-bg-m.jpg",
+        imageShop: "assets/model-3-shop.jpg",
         category: "1-1-model",
     },
     {
@@ -42,6 +45,7 @@ export const modelsData = [
         topSpeed: "155",
         imageBg: "assets/model-x-bg.jpg",
         imageBgMobile: "assets/model-x-bg-m.jpg",
+        imageShop: "assets/model-3-shop.jpg",
         category: "1-1-model",
     },
     {

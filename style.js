@@ -128,7 +128,7 @@ main.addEventListener('scroll', () => {
 ///////////////SIDE MENU///////////////
 
 const sideMenu = document.querySelector('.sidebar')
-const sideMenuBg = document.querySelector('.menu-bg-overlay')
+const bgOverlay = document.querySelector('.menu-bg-overlay')
 const sideMenuOpenButton = document.querySelector('#side-menu-button')
 const sideMenuItens = sideMenuData.sort((a, b) => a.category.localeCompare(b.category))
 let sideMenuBool = "false"
@@ -228,20 +228,87 @@ sideMenuOpenButton.addEventListener('click', () => {
         })
     }
 
-    const sideMenuCloseWays = document.querySelectorAll('.close-button, .menu-bg-overlay')
+    let sideMenuCloseWays = document.querySelectorAll('.close-button, .menu-bg-overlay')
     sideMenuBool = 'true'
     sideMenu.classList.add('open-sidebar')
-    sideMenuBg.classList.add('open-menu-bg-overlay')
+    bgOverlay.classList.add('open-menu-bg-overlay')
 
     sideMenuCloseWays.forEach(e => {
 
         e.addEventListener('click', () => {
 
             sideMenu.classList.remove('open-sidebar')
-            sideMenuBg.classList.remove('open-menu-bg-overlay')
+            bgOverlay.classList.remove('open-menu-bg-overlay')
             sideMenuBool = "false"
         })
 
     })
 
 })
+
+
+
+
+///////////////SHOP MODAL///////////////
+
+
+const openShopModal = document.querySelector('#shop-button')
+const modalResults = document.querySelector('.shop-results')
+
+openShopModal.addEventListener('click', () => {
+
+    let shopModal = document.querySelector('.shop-modal')
+    let closeModalWays = document.querySelectorAll('.modal-close-btn', bgOverlay)
+
+    shopModal.classList.add('shop-modal-open')
+    bgOverlay.classList.add('open-menu-bg-overlay')
+
+
+    closeModalWays.forEach((element, index) => {
+
+        element.addEventListener("click", () => {
+
+            shopModal.classList.remove('shop-modal-open')
+            bgOverlay.classList.remove('open-menu-bg-overlay')
+        })
+
+    })
+})
+
+
+///////////////ITENS GENERATOR///////////////
+
+
+const ModelResult = (data) => {
+
+    data.forEach((element, index, array) => {
+
+        if (element.hasOwnProperty('price')) {
+
+            let createItem = document.createElement("div")
+            createItem.classList.add('shop-item')
+            createItem.innerHTML = `
+                    <div class="item-img"><img src="${element.imageShop}" alt=""></div>
+                    <div class="item-description">
+
+                        <span class="shop-model-title">${element.name}</span>
+                        <span class="shop-model-price">$${element.price}</span>
+                    </div>
+                    <div class="item-buttons">
+                        <input class="shop-buy-button" type="button" value="Buy now">
+                        <input class="shop-add-cart-button" type="button" value="Add to Cart">
+                    </div>
+            
+            
+            `
+            modalResults.appendChild(createItem)
+
+        }
+
+    })
+
+}
+
+
+ModelResult(modelsData)
+
