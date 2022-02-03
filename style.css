@@ -560,7 +560,8 @@ top: -15px;
 .shop-main {
     flex-basis: 90%;
     display: flex;
-    padding: 0 15px;
+    justify-content: flex-end;
+    padding-left: 15px;
     margin-top: 15px;
     box-sizing: border-box;
     background-color: rgb(228, 228, 228);
@@ -571,16 +572,43 @@ top: -15px;
 /**************** SIDE SECTION *****************/
 .shop-main .shop-side-section {
 
-    height: 100%;
-    width: 30%;
-    display: none;
+    height: 0;
+    width: 0;
+    display: flex;
     padding: 15px;
     box-sizing: border-box;
     flex-direction: column;
     background-color: white;
     position: relative;
-    left: 30px;
+    left: 15px;
+    margin-left: -15px;
+    transition: width 1s ease;
+    visibility: hidden;
+    
 }
+
+.shop-main .shop-side-section .shop-side-section-wrapper {
+    
+    height: 100%;
+    display: none;
+    flex-direction: column;
+
+}
+
+.shop-main .shop-side-section .shop-side-section-wrapper-open {
+    
+    display: flex;
+
+}
+
+.shop-main .shop-side-section-open {
+
+
+    width: 49%;
+    height: 100%;
+    visibility: inherit;
+}
+
 
 
 .shop-side-section .side-section-top {
@@ -592,6 +620,24 @@ top: -15px;
     cursor: pointer;
     
     }
+
+
+    .shop-side-section .back-button{
+
+    padding: 5px 10px 5px 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.shop-side-section .back-button:hover {
+
+background-color: hsla(0,0%,0%,.05);
+
+}
+
+
 .shop-side-section .side-section-top img {
     
         height: 14px;
@@ -612,8 +658,16 @@ top: -15px;
     font-size: 24px;
     font-weight: 600;
     text-align: center;
+    animation: reveal-up-simple 1s ease;
 
 }
+
+.shop-side-section .item-img {
+
+
+    animation: reveal-up-simple 1s ease 0.3s backwards;
+}
+
 
 .shop-model-position-1 {
 
@@ -630,7 +684,23 @@ display: flex;
 flex-basis: 33%;
 flex-direction: column;
 align-items: center;
+animation: reveal-up-simple 1s ease backwards;
 }
+
+.shop-model-position-1-item:nth-child(1){
+
+    animation-delay: 0.1s;
+}
+.shop-model-position-1-item:nth-child(2){
+
+    animation-delay: 0.2s;
+}
+.shop-model-position-1-item:nth-child(3){
+
+    animation-delay: 0.3s;
+}
+
+
 
 .shop-model-position-1 .shop-model-position-1-item .position-1-value{
 
@@ -656,6 +726,7 @@ align-items: center;
 
     display: flex;
     width: 100%;
+    animation: reveal-up-simple 1s ease 0.3s backwards;
 
 }
 
@@ -678,9 +749,66 @@ align-items: center;
 
 .shop-main .shop-side-section .item-buttons span {
 
+    animation: reveal-up-simple 1s ease 0.3s backwards;
+
+}
+.shop-main .shop-side-section .item-buttons input:nth-child(2) {
+
+    animation: reveal-up-simple 1s ease 0.4s backwards;
+
+}
+.shop-main .shop-side-section .item-buttons input:nth-child(3) {
+
+    animation: reveal-up-simple 1s ease 0.5s backwards;
+
+}
+
+.shop-main .shop-side-section .item-buttons span {
+
 
     margin: 15px 0;
 }
+
+
+
+@keyframes reveal-up-simple {
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to{
+
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+@keyframes reveal-left-simple {
+    from{
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to{
+
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes reveal-opacity-simple {
+    from{
+        opacity: 0;
+    }
+
+    to{
+
+        opacity: 1;
+    }
+}
+
 
 
 
@@ -693,23 +821,30 @@ align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    padding: 15px 0;
+    padding-top: 15px;
     box-sizing: border-box;
     overflow-y: auto;
+    transition: all 1s ease;
 
+}
 
+.shop-main .shop-results-open {
+
+    width: 100%;
 }
 
 .shop-main .shop-results .shop-item{
 
-    flex-basis: 30%;
-    height: 48%;
+    width: 305px;
+
+    height: 47%;
     display: flex;
     flex-direction: column;
     background-color: white;
     border-radius: 10px;
     padding: 15px;
     margin-right: 15px;
+    margin-bottom: 15px;
     box-sizing: border-box;
 
 

@@ -280,13 +280,15 @@ openShopModal.addEventListener('click', () => {
 
 
 const ModelResult = (data) => {
-
+    modalResults.innerHTML = ``
     data.forEach((element, index, array) => {
 
         if (element.hasOwnProperty('price')) {
 
             let createItem = document.createElement("div")
+            createItem.setAttribute('id', element.id)
             createItem.classList.add('shop-item')
+
             createItem.innerHTML = `
                     <div class="item-img"><img src="${element.imageShop}" alt=""></div>
                     <div class="item-description">
@@ -307,8 +309,140 @@ const ModelResult = (data) => {
 
     })
 
-}
 
+
+
+
+    ///////////////SIDE BAR///////////////
+
+    let itens = document.querySelectorAll('.shop-item')
+    let sideBar = document.querySelector('.shop-side-section')
+    let shopSideBarBool = 'false'
+
+
+    itens.forEach((e) => {
+
+
+        e.addEventListener('click', (i) => {
+
+            let t = i.target
+            while (t && !t.id) { t = t.parentNode; }
+
+            if (t) {
+
+                let itemId = t.id
+                let item = modelsData.filter((e) => { return e.id == itemId })
+
+                sideBar.innerHTML = ` <div class="shop-side-section-wrapper"> <div class="side-section-top"> 
+                <div class="back-button"> <img src="assets/arrow-rigth.svg" class="" alt="">
+                    <span>Back</span>
+                </div>
+
+            </div>
+            <span class="shop-model-title">${item[0].name}</span>
+
+            <div class="item-img"><img src="${item[0].imageShop}" alt=""></div>
+            <div class="item-description">
+
+
+                <div class="shop-model-position-1">
+                    <div class="shop-model-position-1-item shop-model-range">
+                        <span class="position-1-value">${item[0].autonomy}<span class="position-1-unity">mi</span></span>
+                        <span class="position-1-type">Range (est.)</span>
+
+                    </div>
+                    <div class="shop-model-position-1-item shop-model-top-speed">
+                        <span class="position-1-value">${item[0].topSpeed}<span class="position-1-unity">mph</span></span>
+                        <span class="position-1-type">Top Speed</span>
+                    </div>
+                    <div class="shop-model-position-1-item shop-model-aceleration">
+                        <span class="position-1-value">${item[0].topSpeed}<span class="position-1-unity">sec</span></span>
+                        <span class="position-1-type">0-60 mph</span>
+                    </div>
+
+
+                </div>
+                <div class="shop-model-position-2">
+                    <p class="shop-model-description">
+
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed, vel veniam optio minima qui
+                        expedita corrupti saepe recusandae hic nam magnam, praesentium provident inventore! Voluptas
+                        aperiam minus illo numquam quos?
+
+                    </p>
+
+                </div>
+
+
+            </div>
+            <div class="item-buttons">
+                <span>Order your ${item[0].name}</span>
+                <input class="shop-buy-button" type="button" value="Continue to payment">
+                <input class="shop-add-cart-button" type="button" value="Add to Cart">
+            </div></div>
+                `
+
+
+                let shopWrapper = document.querySelector('.shop-side-section-wrapper')
+
+
+
+                if (sideMenuBool == 'false') {
+                    sideBar.addEventListener('transitionend', () => {
+
+                        shopWrapper.classList.add('shop-side-section-wrapper-open')
+
+
+
+                    })
+
+                    shopSideBarBool = 'true'
+                }
+
+
+                // if (sideMenuBool == 'true') {
+                //     console.log("cu")
+                //     shopWrapper.classList.add('shop-side-section-wrapper-open')
+
+                // }
+
+                shopWrapper.classList.add('shop-side-section-wrapper-open')
+
+                sideBar.classList.add('shop-side-section-open')
+                modalResults.classList.add('shop-results-open')
+
+
+                let backButton = document.querySelector('.back-button')
+
+                backButton.addEventListener('click', () => {
+
+                    console.log('cu')
+
+                    sideBar.classList.remove('shop-side-section-open')
+                    modalResults.classList.remove('shop-results-open')
+                    shopSideBarBool = 'false'
+
+                })
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+        })
+
+    })
+
+
+
+}
 
 ModelResult(modelsData)
 
