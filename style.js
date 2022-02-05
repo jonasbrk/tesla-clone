@@ -318,7 +318,6 @@ const ModelResult = (data) => {
     let itens = document.querySelectorAll('.shop-item')
     let sideBar = document.querySelector('.shop-side-section')
     let shopSideBarBool = false
-    let shopSideBarTrasitionBool = false
 
 
     itens.forEach((e) => {
@@ -328,8 +327,12 @@ const ModelResult = (data) => {
 
             let t = i.target
             while (t && !t.id) { t = t.parentNode; }
-
+            itens.forEach((e) => {
+                e.classList.remove('shop-item-hover')
+            })
             if (t) {
+
+                t.classList.add('shop-item-hover')
 
                 let itemId = t.id
                 let item = modelsData.filter((e) => { return e.id == itemId })
@@ -395,7 +398,7 @@ const ModelResult = (data) => {
                         shopWrapper.classList.remove('shop-side-section-wrapper-close')
                         shopWrapper.classList.add('shop-side-section-wrapper-open')
                         shopSideBarBool = true
-                    }, 1000)
+                    }, 700)
                 } else {
                     shopWrapper.classList.remove('shop-side-section-wrapper-close')
                     shopWrapper.classList.add('shop-side-section-wrapper-open')
@@ -411,132 +414,65 @@ const ModelResult = (data) => {
                         sideBar.classList.add('shop-side-section-close')
 
                         shopSideBarBool = false
-
+                        itens.forEach((e) => {
+                            e.classList.remove('shop-item-hover')
+                        })
                     }, 300)
                 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                // console.log('Trasition' + shopSideBarTrasitionBool)
-                // console.log('Bool' + shopSideBarBool)
-
-
-                // sideBar.addEventListener('transitionend', () => {
-
-
-                //     if (shopSideBarBool == 'false' && shopSideBarTrasitionBool == 'false') {
-
-                //         shopWrapper.classList.add('shop-side-section-wrapper-open')
-                //         shopSideBarTrasitionBool = 'false'
-                //         shopSideBarBool = 'true'
-
-                //         console.log('cu')
-
-
-                //     }
-                // })
-
-                // sideBar.addEventListener('transitionstart', () => {
-
-
-                //     if (shopSideBarBool == 'true' && shopSideBarTrasitionBool == 'true') {
-
-                //         shopWrapper.classList.toggle('shop-side-section-wrapper-close')
-                //         shopWrapper.classList.toggle('shop-side-section-wrapper-open')
-                //         shopSideBarTrasitionBool = 'false'
-                //         shopSideBarBool = 'false'
-
-
-                //     }
-                // })
-
-                // if (shopSideBarBool == 'true' && shopSideBarTrasitionBool == 'false') {
-
-                //     shopWrapper.classList.add('shop-side-section-wrapper-open')
-
-                // }
-
-
-                // // if (sideMenuBool == 'true') {
-                // //     console.log("cu")
-                // //     shopWrapper.classList.add('shop-side-section-wrapper-open')
-
-                // // }
-
-
-
-
-
-
-
-                // shopWrapper.addEventListener('transitionend', () => {
-
-
-                //     if (shopSideBarBool == 'true' && shopSideBarTrasitionBool == 'false') {
-
-
-
-
-                //         modalResults.classList.remove('shop-results-open')
-                //         shopWrapper.classList.remove('shop-side-section-wrapper-close')
-                //         shopWrapper.classList.remove('shop-side-section-wrapper-open')
-                //         sideBar.classList.add('shop-side-section-close')
-                //         sideBar.classList.remove('shop-side-section-open')
-                //         shopSideBarTrasitionBool = "true"
-                //         shopSideBarBool = 'true'
-
-
-                //     }
-
-
-                //     let backButton = document.querySelector('.back-button')
-
-                //     backButton.addEventListener('click', () => {
-
-
-                //         shopWrapper.classList.add('shop-side-section-wrapper-close')
-
-                //     })
-
-
-
-
-
-
-                // })
-
-
-
-
-
-
-
-
-
             }
-
-
-
         })
-
     })
-
-
-
 }
 
-ModelResult(modelsData)
+const selectInput = document.querySelector('#order-by')
+const seachInput = document.querySelector('.search-bar')
+const model = modelsData.filter((e) => { return e.hasOwnProperty('price') })
 
+
+selectInput.addEventListener('input', (input) => {
+    let t = input.target.value
+
+    if (t == 'lower-price') {
+        let modelFiltered = model.sort((a, b) => a.price.localeCompare(b.price))
+
+        ModelResult(modelFiltered)
+
+    } if (t == 'highest-price') {
+        let modelFiltered = model.sort((a, b) => b.price.localeCompare(a.price))
+
+        ModelResult(modelFiltered)
+
+    } if (t == 'lower-autonomy') {
+        let modelFiltered = model.sort((a, b) => a.autonomy.localeCompare(b.autonomy))
+
+        ModelResult(modelFiltered)
+
+    } if (t == 'highest-autonomy') {
+        let modelFiltered = model.sort((a, b) => b.autonomy.localeCompare(a.autonomy))
+
+        ModelResult(modelFiltered)
+
+    }
+
+})
+
+
+
+seachInput.addEventListener('keyup', (input) => {
+
+    let t = input.target.value
+
+    let modelFiltered = model.filter((allmodels) => {
+        return (
+            allmodels.name.toLocaleLowerCase().includes(t))
+    })
+
+    ModelResult(modelFiltered)
+
+
+})
+
+
+
+
+ModelResult(modelsData)
