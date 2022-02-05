@@ -317,7 +317,8 @@ const ModelResult = (data) => {
 
     let itens = document.querySelectorAll('.shop-item')
     let sideBar = document.querySelector('.shop-side-section')
-    let shopSideBarBool = 'false'
+    let shopSideBarBool = false
+    let shopSideBarTrasitionBool = false
 
 
     itens.forEach((e) => {
@@ -333,7 +334,7 @@ const ModelResult = (data) => {
                 let itemId = t.id
                 let item = modelsData.filter((e) => { return e.id == itemId })
 
-                sideBar.innerHTML = ` <div class="shop-side-section-wrapper"> <div class="side-section-top"> 
+                sideBar.innerHTML = ` <div class="shop-side-section-wrapper "> <div class="side-section-top"> 
                 <div class="back-button"> <img src="assets/arrow-rigth.svg" class="" alt="">
                     <span>Back</span>
                 </div>
@@ -382,47 +383,140 @@ const ModelResult = (data) => {
             </div></div>
                 `
 
-
                 let shopWrapper = document.querySelector('.shop-side-section-wrapper')
+                let backButton = document.querySelector('.side-section-top .back-button')
 
+                sideBar.classList.remove('shop-side-section-close')
+                modalResults.classList.add('shop-results-open')
+                sideBar.classList.add('shop-side-section-open')
 
-
-                if (sideMenuBool == 'false') {
-                    sideBar.addEventListener('transitionend', () => {
-
+                if (shopSideBarBool === false) {
+                    setTimeout(() => {
+                        shopWrapper.classList.remove('shop-side-section-wrapper-close')
                         shopWrapper.classList.add('shop-side-section-wrapper-open')
-
-
-
-                    })
-
-                    shopSideBarBool = 'true'
+                        shopSideBarBool = true
+                    }, 1000)
+                } else {
+                    shopWrapper.classList.remove('shop-side-section-wrapper-close')
+                    shopWrapper.classList.add('shop-side-section-wrapper-open')
                 }
 
+                backButton.addEventListener('click', () => {
 
-                // if (sideMenuBool == 'true') {
-                //     console.log("cu")
+                    shopWrapper.classList.remove('shop-side-section-wrapper-open')
+                    shopWrapper.classList.add('shop-side-section-wrapper-close')
+                    setTimeout(() => {
+                        shopWrapper.classList.remove('shop-side-section-wrapper-close')
+                        sideBar.classList.remove('shop-side-section-open')
+                        sideBar.classList.add('shop-side-section-close')
+
+                        shopSideBarBool = false
+
+                    }, 300)
+                })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // console.log('Trasition' + shopSideBarTrasitionBool)
+                // console.log('Bool' + shopSideBarBool)
+
+
+                // sideBar.addEventListener('transitionend', () => {
+
+
+                //     if (shopSideBarBool == 'false' && shopSideBarTrasitionBool == 'false') {
+
+                //         shopWrapper.classList.add('shop-side-section-wrapper-open')
+                //         shopSideBarTrasitionBool = 'false'
+                //         shopSideBarBool = 'true'
+
+                //         console.log('cu')
+
+
+                //     }
+                // })
+
+                // sideBar.addEventListener('transitionstart', () => {
+
+
+                //     if (shopSideBarBool == 'true' && shopSideBarTrasitionBool == 'true') {
+
+                //         shopWrapper.classList.toggle('shop-side-section-wrapper-close')
+                //         shopWrapper.classList.toggle('shop-side-section-wrapper-open')
+                //         shopSideBarTrasitionBool = 'false'
+                //         shopSideBarBool = 'false'
+
+
+                //     }
+                // })
+
+                // if (shopSideBarBool == 'true' && shopSideBarTrasitionBool == 'false') {
+
                 //     shopWrapper.classList.add('shop-side-section-wrapper-open')
 
                 // }
 
-                shopWrapper.classList.add('shop-side-section-wrapper-open')
 
-                sideBar.classList.add('shop-side-section-open')
-                modalResults.classList.add('shop-results-open')
+                // // if (sideMenuBool == 'true') {
+                // //     console.log("cu")
+                // //     shopWrapper.classList.add('shop-side-section-wrapper-open')
+
+                // // }
 
 
-                let backButton = document.querySelector('.back-button')
 
-                backButton.addEventListener('click', () => {
 
-                    console.log('cu')
 
-                    sideBar.classList.remove('shop-side-section-open')
-                    modalResults.classList.remove('shop-results-open')
-                    shopSideBarBool = 'false'
 
-                })
+
+                // shopWrapper.addEventListener('transitionend', () => {
+
+
+                //     if (shopSideBarBool == 'true' && shopSideBarTrasitionBool == 'false') {
+
+
+
+
+                //         modalResults.classList.remove('shop-results-open')
+                //         shopWrapper.classList.remove('shop-side-section-wrapper-close')
+                //         shopWrapper.classList.remove('shop-side-section-wrapper-open')
+                //         sideBar.classList.add('shop-side-section-close')
+                //         sideBar.classList.remove('shop-side-section-open')
+                //         shopSideBarTrasitionBool = "true"
+                //         shopSideBarBool = 'true'
+
+
+                //     }
+
+
+                //     let backButton = document.querySelector('.back-button')
+
+                //     backButton.addEventListener('click', () => {
+
+
+                //         shopWrapper.classList.add('shop-side-section-wrapper-close')
+
+                //     })
+
+
+
+
+
+
+                // })
 
 
 
