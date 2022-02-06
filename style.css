@@ -165,7 +165,7 @@ header {
 
 /* ==========================> SIDE MENU <========================== */
 
-.menu-bg-overlay {
+.menu-bg-overlay, .account-bg-overlay, .shop-bg-overlay {
 
 height: 100vh;
 width: 120vw;
@@ -182,7 +182,7 @@ visibility: hidden;
 opacity: 0;
 }
 
-.open-menu-bg-overlay{
+.open-menu-bg-overlay, .open-account-bg-overlay, .open-shop-bg-overlay{
     transition: opacity 0.5s ease, visibility, 0.5s;
     visibility: inherit;
     opacity: 1;

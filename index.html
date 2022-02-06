@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tesla project</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="account-style.css">
 </head>
 
 <body>
@@ -55,27 +56,6 @@
                     <option value="lower-autonomy">Lower autonomy</option>
                     <option value="highest-autonomy">Highest autonomy</option>
                 </select>
-
-                <!-- <span>Filter by:</span>
-                <div class="range-filter-wrapper">
-
-                    <div class="range-filter-value">
-                        <input type="number">
-                        <input type="number">
-                    </div>
-
-                    <div class="range-filter">
-
-                        <input type="range" name="slider" id="slider-1" min="0" max="100" value="30">
-                        <input type="range" name="slider" id="slider-2" min="0" max="100" value="70">
-
-                        <div class="range-slider">
-                            <div class="range-progress">
-
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
 
 
             </div>
@@ -162,6 +142,43 @@
         </div>
 
 
+    </section>
+
+    <section class="account-bg-overlay" id="account-bg-overlay">
+        <div class="account" id="account">
+            <div class="account-header">
+                <img class="account-logo" src="assets/tesla-logo.svg" alt="">
+            </div>
+            <div class="account-main">
+                <span class="warning-error">*Invalid Email/Password. Please, Try Again!</span>
+                <div class="account-input">
+                    <input type="text" id="email" placeholder="Enter your E-mail">
+                    <input type="password" id="password" placeholder="Enter your Password">
+                </div>
+
+                <div class="account-buttons">
+                    <a href="" class="forgot-password">Forgot Password?</a>
+                    <div class="account-buttons-wrapper">
+
+                        <a class="account-button" id="account-cancel">Cancel</a>
+                        <a class="account-button" id="account-login">Login</a>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="logged-screen">
+                <span class="logged-title">Done!</span>
+                <span class="logged-messege">you're already logged in</span>
+                <a class="account-button" id="account-cancel">Close</a>
+
+            </div>
+
+
+
+
+        </div>
     </section>
 
 

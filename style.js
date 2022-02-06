@@ -126,7 +126,6 @@ main.addEventListener('scroll', () => {
                 <a href="#">LEARN MORE</a>
              </div>`
             }
-
             if (modelInfo.id == 'accessories') {
                 modelReveal.children[0].innerHTML = `                
                     <div class="model-wrapper">
@@ -213,7 +212,14 @@ sideMenuOpenButton.addEventListener('click', () => {
         fullSideMenuItems.forEach((element, index, array) => {
 
             if (index <= 18) {
-                createMenuItens('li', `<a href='#'> <span>${element.name}</span></a>`, sideMenuPag1, '')
+                if (element.id != "shop") {
+                    createMenuItens('li', `<a href='#'> <span>${element.name}</span></a>`, sideMenuPag1, '')
+                }
+                if (element.id == "shop") {
+                    createMenuItens('li', `<a href='#' id="${element.id}-button"> <span>${element.name}</span></a>`, sideMenuPag1, '')
+
+                    const openShopMenu = document.querySelectorAll('#shop-button')
+                }
             }
 
             if (index > 18) {
@@ -279,30 +285,33 @@ sideMenuOpenButton.addEventListener('click', () => {
 ///////////////SHOP MODAL///////////////
 
 
-const openShopModal = document.querySelector('#shop-button')
+const openShopModal = document.querySelectorAll('#shop-button')
 const modalResults = document.querySelector('.shop-results')
+import { login } from "./account.js";
 
-openShopModal.addEventListener('click', () => {
+console.log(openShopModal)
+openShopModal.forEach((e) => {
+    e.addEventListener('click', () => {
 
-    let shopModal = document.querySelector('.shop-modal')
-    let closeModalWays = document.querySelectorAll('.modal-close-btn', bgOverlay)
+        let shopModal = document.querySelector('.shop-modal')
+        let closeModalWays = document.querySelectorAll('.modal-close-btn', bgOverlay)
 
-    shopModal.classList.add('shop-modal-open')
-    bgOverlay.classList.add('open-menu-bg-overlay')
+        shopModal.classList.add('shop-modal-open')
+        bgOverlay.classList.add('open-menu-bg-overlay')
 
 
-    closeModalWays.forEach((element, index) => {
+        closeModalWays.forEach((element, index) => {
 
-        element.addEventListener("click", () => {
+            element.addEventListener("click", () => {
 
-            shopModal.classList.remove('shop-modal-open')
-            bgOverlay.classList.remove('open-menu-bg-overlay')
+                shopModal.classList.remove('shop-modal-open')
+                bgOverlay.classList.remove('open-menu-bg-overlay')
+            })
+
         })
-
     })
+
 })
-
-
 ///////////////ITENS GENERATOR///////////////
 
 
@@ -446,9 +455,14 @@ const ModelResult = (data) => {
                         })
                     }, 300)
                 })
+
+                login()
             }
         })
     })
+
+    login()
+
 }
 
 const selectInput = document.querySelector('#order-by')
