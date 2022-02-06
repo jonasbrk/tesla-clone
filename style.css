@@ -203,6 +203,7 @@ opacity: 0;
     transform: translateX(50%);
     visibility: hidden;
     opacity: 0;
+    overflow-y: auto;
 
 }
 
