@@ -103,17 +103,39 @@ main.addEventListener('scroll', () => {
             modelReveal.style.opacity = easeInOutCubic(scrollOpacity)
         }
         if (easeInOutCubic(scrollOpacity) >= 0.000000 && easeInOutCubic(scrollOpacity) <= 0.01 && sectionIndex == i) {
-
-            modelReveal.children[0].innerHTML = `                
+            if (modelInfo.hasOwnProperty('price')) {
+                modelReveal.children[0].innerHTML = `                
     
             <div class="model-wrapper">
                 <h2 class="model-title">${modelInfo.name}</h2>
-                <h3 class="model-description">Order Online for <a href="#">Touchless Delivery</a></h3>
+                <h3 class="model-description">${modelInfo.subtitle}</h3>
             </div>
             <div class="button-wrapper">
                 <a href="#">CUSTOM ORDER</a>
                 <a href="#">EXISTING INVENTORY</a>
              </div>`
+            }
+            if (modelInfo.id == 'solar-panels' || modelInfo.id == 'solar-roof') {
+                modelReveal.children[0].innerHTML = `                
+                <div class="model-wrapper">
+                <h2 class="model-title">${modelInfo.name}</h2>
+                <h3 class="model-description">${modelInfo.subtitle}</h3>
+            </div>
+            <div class="button-wrapper">
+                <a href="#">ORDER NOW</a>
+                <a href="#">LEARN MORE</a>
+             </div>`
+            }
+
+            if (modelInfo.id == 'accessories') {
+                modelReveal.children[0].innerHTML = `                
+                    <div class="model-wrapper">
+                        <h2 class="model-title">${modelInfo.name}</h2>
+                    </div>
+                    <div class="button-wrapper">
+                        <a href="#">SHOP NOW</a>
+                     </div>`
+            }
 
             let iniAnimationItens = document.querySelectorAll('header, .model-title, .model-description, .button-wrapper a:nth-child(1), .button-wrapper a:nth-child(2)')
 

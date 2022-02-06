@@ -7,6 +7,7 @@ export const modelsData = [
     {
         id: "model-3",
         name: "Model 3",
+        subtitle: 'Order Online for <a href="#">Touchless Delivery</a>',
         price: "39,940",
         autonomy: "267",
         topSpeed: "140",
@@ -18,6 +19,7 @@ export const modelsData = [
     {
         id: "model-y",
         name: "Model Y",
+        subtitle: 'Order Online for <a href="#">Touchless Delivery</a>',
         price: "53,940",
         autonomy: "318",
         topSpeed: "135",
@@ -29,6 +31,7 @@ export const modelsData = [
     {
         id: "model-s",
         name: "Model S",
+        subtitle: 'Order Online for <a href="#">Touchless Delivery</a>',
         price: "88,740",
         autonomy: "375",
         topSpeed: "155",
@@ -40,6 +43,7 @@ export const modelsData = [
     {
         id: "model-x",
         name: "Model X",
+        subtitle: 'Order Online for <a href="#">Touchless Delivery</a>',
         price: "98,940",
         autonomy: "332",
         topSpeed: "155",
@@ -51,6 +55,7 @@ export const modelsData = [
     {
         id: "solar-panels",
         name: "Solar Panels",
+        subtitle: 'Lowest Cost Solar Panels in America',
         imageBg: "assets/solar-panel-bg.jpg",
         imageBgMobile: "assets/solar-panel-bg-m.jpg",
         category: "1-1-model",
@@ -58,6 +63,7 @@ export const modelsData = [
     {
         id: "solar-roof",
         name: "Solar Roof",
+        subtitle: 'Produce Clean Energy From Your Roof',
         imageBg: "assets/solar-roof-bg.jpg",
         imageBgMobile: "assets/solar-roof-bg-m.jpg",
         category: "1-1-model",
@@ -65,6 +71,7 @@ export const modelsData = [
     {
         id: "accessories",
         name: "Accessories",
+        subtitle: 'Order Online for <a href="#">Touchless Delivery</a>',
         imageBg: "assets/acessories-bg.jpg",
         imageBgMobile: "assets/acessories-bg-m.jpg",
         category: "1-1-model",
