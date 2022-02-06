@@ -1,80 +1,52 @@
 const marker = document.querySelector('#marker');
 const header = document.querySelector('header');
 const main = document.querySelector('main');
-const body = document.querySelector('body');
 const headerCentral = document.querySelector('.header-wrapper .container-central-menu')
 import { modelsData } from "./data.js";
-
-
-
-
 const easeInOutCubic = (t) => {
     return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 };
 
-
-
-
-///////////////ELEMENTS GENERATOR///////////////
-
-modelsData.forEach((element, index, array) => {
-
+//ELEMENTS GENERATOR
+modelsData.forEach((e) => {
     let section = document.createElement('section');
     let a = document.createElement('a');
 
-    /////////MODEL SECTIONS/////////
+    //MODEL SECTIONS
     section.innerHTML = `
             <picture>
-                <source media="(max-width: 911px)" srcset="${modelsData[index].imageBgMobile}">
-                <img src="${modelsData[index].imageBg}">
+                <source media="(max-width: 911px)" srcset="${e.imageBgMobile}">
+                <img src="${e.imageBg}">
             </picture>
         `;
     section.classList.add('section-model')
-    section.setAttribute("id", modelsData[index].id)
+    section.setAttribute("id", e.id)
     main.appendChild(section)
 
-    /////////CENTRAL MENU/////////
-
-    a.innerHTML = `<span>${modelsData[index].name}</span>`
-    a.setAttribute('href', `#${modelsData[index].id}`)
-    a.setAttribute('id', `${modelsData[index].id}-menu`)
+    //CENTRAL MENU
+    a.innerHTML = `<span>${e.name}</span>`
+    a.setAttribute('href', `#${e.id}`)
+    a.setAttribute('id', `${e.id}-menu`)
     headerCentral.appendChild(a)
-
 })
 
 const item = document.querySelectorAll('.container-central-menu a, .container-menu a');
 
-
-
-
-
-
-///////////////HEADER ANIMATIONS///////////////
-
-
+//HEADER ANIMATIONS
 function indicator(e) {
-
     marker.style.left = e.offsetLeft - 12 + 'px';
     marker.style.width = e.offsetWidth + 'px';
     marker.style.transition = 'opacity 1s , width 0.5s';
     marker.style.opacity = '1';
     marker.style.transition = 'opacity 1s , width 0.5s, left 0.5s';
-
-
 }
 
 item.forEach(link => {
     link.addEventListener('mouseover', (e) => {
-
         let t = e.target
-
         while (t && !t.id) { t = t.parentNode; }
-
         indicator(t);
-
     })
-
-
 })
 
 header.addEventListener('mouseleave', () => {
@@ -85,9 +57,7 @@ header.addEventListener('mouseleave', () => {
 
 })
 
-
-///////////////SCROLL ANIMATIONS///////////////
-
+//SCROLL ANIMATIONS
 main.addEventListener('scroll', () => {
 
     let model = document.querySelectorAll('.section-model')
@@ -138,12 +108,9 @@ main.addEventListener('scroll', () => {
 
             let iniAnimationItens = document.querySelectorAll('header, .model-title, .model-description, .button-wrapper a:nth-child(1), .button-wrapper a:nth-child(2)')
 
-
             iniAnimationItens.forEach(item => {
-
                 item.classList.add('animation-none')
             });
-
         }
     }
 })

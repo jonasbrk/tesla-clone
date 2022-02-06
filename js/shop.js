@@ -1,23 +1,16 @@
-
+import { login } from "./account.js";
+import { modelsData } from "./data.js";
 const openShopModal = document.querySelectorAll('#shop-button')
 const modalResults = document.querySelector('.shop-results')
 const shopBgOverlay = document.querySelector('.shop-bg-overlay')
 
-import { login } from "./account.js";
-import { modelsData } from "./data.js";
-
-
 openShopModal.forEach((e) => {
     e.addEventListener('click', () => {
-
-        console.log('oi')
-
         let shopModal = document.querySelector('.shop-modal')
         let closeModalWays = document.querySelectorAll('.modal-close-btn, .shop-bg-overlay')
 
         shopModal.classList.add('shop-modal-open')
         shopBgOverlay.classList.add('open-shop-bg-overlay')
-
 
         closeModalWays.forEach((e) => {
 
@@ -26,58 +19,43 @@ openShopModal.forEach((e) => {
                 shopModal.classList.remove('shop-modal-open')
                 shopBgOverlay.classList.remove('open-shop-bg-overlay')
             })
-
         })
     })
-
 })
-///////////////ITENS GENERATOR///////////////
 
-
+//ITENS GENERATOR
 const ModelResult = (data) => {
     modalResults.innerHTML = ``
-    data.forEach((element, index, array) => {
+    data.forEach((e) => {
 
-        if (element.hasOwnProperty('price')) {
+        if (e.hasOwnProperty('price')) {
 
             let createItem = document.createElement("div")
-            createItem.setAttribute('id', element.id)
+            createItem.setAttribute('id', e.id)
             createItem.classList.add('shop-item')
 
             createItem.innerHTML = `
-                    <div class="item-img"><img src="${element.imageShop}" alt=""></div>
+                    <div class="item-img"><img src="${e.imageShop}" alt=""></div>
                     <div class="item-description">
-
-                        <span class="shop-model-title">${element.name}</span>
-                        <span class="shop-model-price">$${element.price}</span>
+                        <span class="shop-model-title">${e.name}</span>
+                        <span class="shop-model-price">$${e.price}</span>
                     </div>
                     <div class="item-buttons">
                         <input class="shop-buy-button" type="button" value="Buy now">
                         <input class="shop-add-cart-button" type="button" value="Add to Cart">
                     </div>
-            
-            
             `
             modalResults.appendChild(createItem)
-
         }
-
     })
 
-
-
-
-
-    ///////////////SIDE BAR///////////////
+    //SIDE BAR
 
     let itens = document.querySelectorAll('.shop-item')
     let sideBar = document.querySelector('.shop-side-section')
     let shopSideBarBool = false
 
-
     itens.forEach((e) => {
-
-
         e.addEventListener('click', (i) => {
 
             let t = i.target
@@ -88,7 +66,6 @@ const ModelResult = (data) => {
             if (t) {
 
                 t.classList.add('shop-item-hover')
-
                 let itemId = t.id
                 let item = modelsData.filter((e) => { return e.id == itemId })
 
@@ -96,19 +73,14 @@ const ModelResult = (data) => {
                 <div class="back-button"> <img src="assets/svg/arrow-rigth.svg" class="" alt="">
                     <span>Back</span>
                 </div>
-
             </div>
             <span class="shop-model-title">${item[0].name}</span>
-
             <div class="item-img"><img src="${item[0].imageShop}" alt=""></div>
             <div class="item-description">
-
-
                 <div class="shop-model-position-1">
                     <div class="shop-model-position-1-item shop-model-range">
                         <span class="position-1-value">${item[0].autonomy}<span class="position-1-unity">mi</span></span>
                         <span class="position-1-type">Range (est.)</span>
-
                     </div>
                     <div class="shop-model-position-1-item shop-model-top-speed">
                         <span class="position-1-value">${item[0].topSpeed}<span class="position-1-unity">mph</span></span>
@@ -118,21 +90,14 @@ const ModelResult = (data) => {
                         <span class="position-1-value">${item[0].topSpeed}<span class="position-1-unity">sec</span></span>
                         <span class="position-1-type">0-60 mph</span>
                     </div>
-
-
                 </div>
                 <div class="shop-model-position-2">
                     <p class="shop-model-description">
-
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed, vel veniam optio minima qui
                         expedita corrupti saepe recusandae hic nam magnam, praesentium provident inventore! Voluptas
                         aperiam minus illo numquam quos?
-
                     </p>
-
                 </div>
-
-
             </div>
             <div class="item-buttons">
                 <span>Order your ${item[0].name}</span>
@@ -174,14 +139,11 @@ const ModelResult = (data) => {
                         })
                     }, 300)
                 })
-
                 login()
             }
         })
     })
-
     login()
-
 }
 
 const selectInput = document.querySelector('#order-by')
@@ -211,25 +173,15 @@ selectInput.addEventListener('input', (input) => {
         let modelFiltered = model.sort((a, b) => b.autonomy.localeCompare(a.autonomy))
 
         ModelResult(modelFiltered)
-
     }
-
 })
-
-
 
 seachInput.addEventListener('keyup', (input) => {
 
     let t = input.target.value
-
     let modelFiltered = model.filter((allmodels) => allmodels.name.toLocaleLowerCase().includes(t))
 
     ModelResult(modelFiltered)
-
-
 })
-
-
-
 
 ModelResult(modelsData)

@@ -1,11 +1,13 @@
 
 import { sideMenuData } from "./data.js";
+import { modelsData } from "./data.js";
+
+
 const sideMenu = document.querySelector('.sidebar')
-const bgOverlay = document.querySelector('.menu-bg-overlay')
+const menuBgOverlay = document.querySelector('.menu-bg-overlay')
 const sideMenuOpenButton = document.querySelector('#side-menu-button')
 const sideMenuItens = sideMenuData.sort((a, b) => a.category.localeCompare(b.category))
-let sideMenuBool = "false"
-let sideMenuResponsiveBool = ""
+let sideMenuBool = false
 
 const createMenuItens = (type, innerHTML, parent, atributeType, atribute) => {
     let createMenuItens = document.createElement(type);
@@ -16,20 +18,16 @@ const createMenuItens = (type, innerHTML, parent, atributeType, atribute) => {
 
 sideMenuOpenButton.addEventListener('click', () => {
 
-    if (window.innerWidth > 1200 && sideMenuBool == 'false' && sideMenuResponsiveBool != "false") {
+    if (window.innerWidth > 1200 && sideMenuBool === false) {
         sideMenu.innerHTML = `
         <div class="sidebar-header"><span class="sidebar-back-button"><img src="assets/svg/arrow-rigth.svg">Back</span><img src="assets/svg/close-button.svg" class="close-button"></img></div> 
      `
-
         createMenuItens('ul', ``, sideMenu, 'id', 'sideMenuPag1')
         let sideMenuPag1 = document.querySelector('#sideMenuPag1')
 
-        sideMenuItens.forEach((element, index, array) => {
-
+        sideMenuItens.forEach((element) => {
             if (element.screen == "pc") {
-
                 createMenuItens('li', `<a href='#'> <span>${element.name}</span></a>`, sideMenuPag1, '')
-
             }
         })
 
@@ -40,14 +38,12 @@ sideMenuOpenButton.addEventListener('click', () => {
             </div>
             </a>`, sideMenuPag1, '')
 
-        sideMenuResponsiveBool = 'false'
     }
 
-    if (window.innerWidth < 1200 && sideMenuBool == 'false' && sideMenuResponsiveBool != "true") {
+    if (window.innerWidth < 1200 && sideMenuBool === false) {
         sideMenu.innerHTML = `
         <div class="sidebar-header"><span class="sidebar-back-button"><img src="assets/svg/arrow-rigth.svg">Back</span><img src="assets/svg/close-button.svg" class="close-button"></img></div>
      `
-
         createMenuItens('ul', ``, sideMenu, 'id', 'sideMenuPag1')
         createMenuItens('ul', ``, sideMenu, 'id', 'sideMenuPag2')
         let sideMenuPag1 = document.querySelector('#sideMenuPag1')
@@ -56,7 +52,7 @@ sideMenuOpenButton.addEventListener('click', () => {
 
         let fullSideMenuData = sideMenuItens.concat(modelsData)
         let fullSideMenuItems = fullSideMenuData.sort((a, b) => a.category.localeCompare(b.category))
-        fullSideMenuItems.forEach((element, index, array) => {
+        fullSideMenuItems.forEach((element, index) => {
 
             if (index <= 18) {
                 if (element.id != "shop") {
@@ -64,8 +60,6 @@ sideMenuOpenButton.addEventListener('click', () => {
                 }
                 if (element.id == "shop") {
                     createMenuItens('li', `<a href='#' id="${element.id}-button"> <span>${element.name}</span></a>`, sideMenuPag1, '')
-
-                    const openShopMenu = document.querySelectorAll('#shop-button')
                 }
             }
 
@@ -91,7 +85,7 @@ sideMenuOpenButton.addEventListener('click', () => {
         </div>
         </a>`, sideMenuPag2, '')
 
-        sideMenuResponsiveBool = 'true'
+
 
         const MoreButton = document.querySelector('.menu-more')
         const backButton = document.querySelector('.sidebar-back-button')
@@ -109,17 +103,17 @@ sideMenuOpenButton.addEventListener('click', () => {
     }
 
     let sideMenuCloseWays = document.querySelectorAll('.close-button, .menu-bg-overlay')
-    sideMenuBool = 'true'
+    sideMenuBool = true
     sideMenu.classList.add('open-sidebar')
-    bgOverlay.classList.add('open-menu-bg-overlay')
+    menuBgOverlay.classList.add('open-menu-bg-overlay')
 
     sideMenuCloseWays.forEach(e => {
 
         e.addEventListener('click', () => {
 
             sideMenu.classList.remove('open-sidebar')
-            bgOverlay.classList.remove('open-menu-bg-overlay')
-            sideMenuBool = "false"
+            menuBgOverlay.classList.remove('open-menu-bg-overlay')
+            sideMenuBool = false
         })
 
     })

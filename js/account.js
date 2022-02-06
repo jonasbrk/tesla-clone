@@ -24,8 +24,6 @@ export const login = () => {
 
             closeWays.forEach((e) => {
 
-
-
                 e.addEventListener("click", (e) => {
                     let t = e.target
                     if (t.id == 'account-bg-overlay' || t.id == "account-cancel") {
@@ -33,10 +31,7 @@ export const login = () => {
                         accountBgOverlay.classList.remove('open-account-bg-overlay')
                     }
                 })
-
             })
-
-
 
             login.addEventListener("click", () => {
 
@@ -54,18 +49,10 @@ export const login = () => {
                             loggedScreen.classList.remove('logged-screen-close')
                             loggedScreen.classList.add('logged-screen-open')
                         }, 100);
-
                     }, 600);
-
-
                     loggedBool = true
                 }
             })
-
-
         })
-
-
     })
-
 }

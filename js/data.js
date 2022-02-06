@@ -1,7 +1,3 @@
-
-
-
-
 export const modelsData = [
 
     {
@@ -77,8 +73,6 @@ export const modelsData = [
         category: "1-1-model",
     },
 ]
-
-
 
 export const sideMenuData = [
 
@@ -201,5 +195,4 @@ export const sideMenuData = [
         screen: "mobile",
         category: "4-others",
     },
-
 ]
