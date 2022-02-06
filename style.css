@@ -4,6 +4,7 @@
 
         color: #393c41;
         scroll-behavior: smooth;
+        
 }
 
 body{
@@ -14,6 +15,22 @@ body{
 
     
 }
+
+    main::-webkit-scrollbar, .shop-main::-webkit-scrollbar,.shop-results::-webkit-scrollbar{
+    background-color: transparent;
+    width: 5px;
+    }
+ 
+    main::-webkit-scrollbar-track, .shop-main::-webkit-scrollbar-trackm,.shop-results::-webkit-scrollbar-trackm{
+        background-color: transparent;
+    }
+ 
+    main::-webkit-scrollbar-thumb, .shop-main::-webkit-scrollbar-thumb,.shop-results::-webkit-scrollbar-thumb{
+    background: rgb(182, 182, 182);
+    border-radius: 20px;
+    }
+
+
 
 
 /* ==========================> Header <========================== */
@@ -41,7 +58,8 @@ header {
 
     background-color: hsla(0,0%,0%,.05);
     backdrop-filter: blur(16px);
-    padding: 0 12px;
+
+    transform: translateX(12px);
     position: absolute;
     left: 0;
     height: 32px;
@@ -92,7 +110,7 @@ header {
 .container-logo {
 
     display: flex;
-    flex-basis: 30%;
+    flex-basis: 15%;
     padding-left: 32px;
     box-sizing: border-box;
 
@@ -110,8 +128,8 @@ header {
 .container-central-menu {
 
     display: flex;
-    flex-basis: 40%;
-    justify-content: space-around;
+    flex-basis: 70%;
+    justify-content: center;
     align-items: center;
     
 }
@@ -122,13 +140,14 @@ header {
     font-weight: 500;
     font-size: 14px;
     z-index: 10000;
+    padding: 5px 15px
 }
 
 /* ================> menu <================*/
 
 .container-menu {
     display: flex;
-    flex-basis: 30%;
+    flex-basis: 15%;
     padding-right: 30px;
     text-decoration: none;
     justify-content: flex-end;
@@ -140,7 +159,7 @@ header {
 
     display: flex;
     justify-content: center;
-    margin-right: 30px;
+
 }
 
 
@@ -390,6 +409,14 @@ justify-content: space-between;
 
 }
 
+.shop-modal .header-section-1{
+
+display: flex;
+align-items: center;
+
+
+}
+
 .shop-modal .header-section .shop-title {
 
     margin: 0;
@@ -413,13 +440,13 @@ justify-content: space-between;
 
 /**************** FILTERS *****************/
 
-.shop-modal .header-search .search-bar{
+.shop-modal  .search-bar{
 
     height: 70%;
     border: 1px solid #5c5e62;
     border-radius: 15px;
-    margin-left: 15px;
-    padding: 0 10px;
+    margin-right: 15px;
+    padding: 5px 10px;
     box-sizing: border-box;
 
     color: #5c5e62;
@@ -432,7 +459,7 @@ justify-content: space-between;
 .shop-modal .header-search .order-by{
 
     height: 70%;
-    width: 10%;
+    width: fit-content;
     border: 1px solid #5c5e62;
     border-radius: 15px;
     padding-left: 10px;
@@ -443,12 +470,6 @@ justify-content: space-between;
     outline: none;
 }
 
-.shop-modal .header-search .order-by:focus{
-
-    width: 12%;
-
-
-}
 
 .shop-modal .header-search .range-filter-wrapper {
 
@@ -567,13 +588,15 @@ top: -15px;
     box-sizing: border-box;
     background-color: rgb(228, 228, 228);
     border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
     
 
 }
 /**************** SIDE SECTION *****************/
 .shop-main .shop-side-section {
 
-    height: 100%;
+    height: 41rem;
     width: 0;
     display: flex;
     padding: 15px;
@@ -591,7 +614,7 @@ top: -15px;
 .shop-main .shop-side-section .shop-side-section-wrapper {
     
     height: 0;
-    display: flex;
+    display: none;
     flex-direction: column;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -600,16 +623,17 @@ top: -15px;
 }
 
 .shop-main .shop-side-section .shop-side-section-wrapper-open {
-    
+ 
+    display: flex;
     opacity: 1;
-    height: 100%;
+    height: 655px;
 
 }
 .shop-main .shop-side-section .shop-side-section-wrapper-close {
     
-
+    display: flex;
     opacity: 0;
-    height: 100%;
+    height: 655px;
 
     
 
@@ -618,8 +642,8 @@ top: -15px;
 .shop-main .shop-side-section-open {
 
 
-    width: 49%;
-    height: 100%;
+    width: 500px;
+    height: 41rem;
     display: flex;
     visibility: inherit;
 }
@@ -957,6 +981,8 @@ align-items: center;
     border: 0;
     border-radius: 16px;
     margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
 
     color: white;
     font-size: 12px;
@@ -965,10 +991,26 @@ align-items: center;
     
 }
 
+
+
+.shop-main .shop-buy-button:hover {
+
+    background-color: #375cc2;
+
+}
+
 .shop-add-cart-button {
 
     background-color: #f4f4f4;
     color: rgb(49, 49, 49);
+
+}
+
+
+.shop-add-cart-button:hover {
+
+
+    background-color: #ebebeb;
 }
 
 
@@ -1073,6 +1115,11 @@ main section {
     width: fit-content;
     position: fixed;
     bottom: 15vh;
+}
+
+.button-wrapper a {
+
+    cursor: pointer;
 }
 
 
@@ -1253,6 +1300,10 @@ main section {
             margin-right:  32px;;
         }
 
+    header   .container-header-bottom {
+
+        justify-content: space-between;
+    }
 }
 
 
@@ -1292,5 +1343,41 @@ main section {
             flex-basis: 100%;
             margin-bottom: 15px;
         }
+    
+    header   .container-header-bottom {
 
+            justify-content: space-between;
+        }
+
+
+
+        .shop-main {
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            overflow-y: hidden;
+        }
+        .shop-main .shop-side-section {
+
+            position: absolute;
+       
+        }
+
+        .shop-main .shop-side-section-open {
+
+
+            width: 100%;
+            
+        }
+
+        .shop-main .shop-side-section-close {
+
+            left: 0;
+        }
+
+
+        .shop-main .shop-results {
+
+            justify-content: center;
+        }
 }

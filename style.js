@@ -37,6 +37,7 @@ modelsData.forEach((element, index, array) => {
 
     a.innerHTML = `<span>${modelsData[index].name}</span>`
     a.setAttribute('href', `#${modelsData[index].id}`)
+    a.setAttribute('id', `${modelsData[index].id}-menu`)
     headerCentral.appendChild(a)
 
 })
@@ -65,7 +66,11 @@ function indicator(e) {
 item.forEach(link => {
     link.addEventListener('mouseover', (e) => {
 
-        indicator(e.target);
+        let t = e.target
+
+        while (t && !t.id) { t = t.parentNode; }
+
+        indicator(t);
 
     })
 
@@ -426,7 +431,7 @@ const ModelResult = (data) => {
 
 const selectInput = document.querySelector('#order-by')
 const seachInput = document.querySelector('.search-bar')
-const model = modelsData.filter((e) => { return e.hasOwnProperty('price') })
+const model = modelsData.filter((e) => e.hasOwnProperty('price'))
 
 
 selectInput.addEventListener('input', (input) => {
@@ -462,10 +467,7 @@ seachInput.addEventListener('keyup', (input) => {
 
     let t = input.target.value
 
-    let modelFiltered = model.filter((allmodels) => {
-        return (
-            allmodels.name.toLocaleLowerCase().includes(t))
-    })
+    let modelFiltered = model.filter((allmodels) => allmodels.name.toLocaleLowerCase().includes(t))
 
     ModelResult(modelFiltered)
 
