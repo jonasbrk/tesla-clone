@@ -1,0 +1,251 @@
+
+main {
+
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+main section {
+
+    scroll-snap-align: start;
+}
+
+.model-data {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+
+}
+
+.section-model {
+
+    height: 100vh;
+
+}
+
+.section-model picture, .section-model source, .section-model img {
+
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+
+
+.model-wrapper {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    position: fixed;
+    top: 54px;
+    margin-top: 10vh;
+
+    
+}
+
+
+
+.model-title {
+
+    font-size: 40px;
+    font-weight: 500;
+    margin: 0%; 
+    animation: ini-reveal-animation 1.5s;
+    animation-delay: 1s;
+
+
+}
+
+
+.model-description {
+
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0%;
+    animation: ini-opacity-animation 1s;
+    animation-delay: 2s;
+}
+
+.model-description, .model-title {
+
+    opacity: 0;
+    animation-fill-mode: forwards;
+
+
+}
+
+
+.button-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+    position: fixed;
+    bottom: 15vh;
+}
+
+.button-wrapper a {
+
+    cursor: pointer;
+}
+
+
+.button-wrapper a:nth-child(1){
+
+    animation: ini-reveal-animation-left 0.5s ease-out;
+    opacity: 0;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.button-wrapper a:nth-child(2){
+
+    animation: ini-reveal-animation-rigth 0.5s ease-out;
+    opacity: 0;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+
+.button-wrapper a {
+    height: 40px;
+    width: 256px;
+    background-color: #dcd8d8;
+    text-align: center;
+    line-height: 40px;
+    margin: 0 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-family: "Gotham Book",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #313338;
+
+}
+
+
+
+.button-wrapper a:first-child {
+    color: white;
+    background-color: #313338;
+}
+
+.scroll-indicator {
+
+    height: 30px;
+    animation: bouncing-scroll-indicator 2s infinite;
+    animation-delay: 3s;
+
+}
+
+.scroll-indicator-wrapper {
+    opacity: 0;
+    position: fixed;
+    bottom: 30px;
+    animation: ini-reveal-animation-top 1s forwards;
+    animation-delay: 2s;
+}
+
+@keyframes ini-reveal-animation-top {
+
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes bouncing-scroll-indicator {
+    0% {transform: translateY(0);}
+    20% {transform: translateY(10px);}
+    30% {transform: translateY(0);}
+    40% {transform: translateY(5px);}
+    50% {transform: translateY(0);}
+    100% {transform: translateY(0);}
+}
+
+@keyframes ini-reveal-animation {
+
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+}
+
+@keyframes ini-reveal-animation-left {
+
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+}
+
+@keyframes ini-reveal-animation-rigth {
+
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+}
+
+@keyframes ini-opacity-animation {
+
+    from {
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+    }
+
+}
+
+
+.animation-none {
+
+    animation: none !important; 
+    opacity: 1 !important;
+}
+

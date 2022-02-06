@@ -6,8 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tesla project</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="account-style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/account-style.css">
+    <link rel="stylesheet" href="css/section.css">
+    <link rel="stylesheet" href="css/shop.css">
+    <link rel="stylesheet" href="css/sidemenu.css">
+    <link rel="stylesheet" href="css/mediaQuerry.css">
 </head>
 
 <body>
@@ -16,7 +20,7 @@
 
         <div class="header-wrapper container-header-bottom ">
             <div class="header-wrapper container-logo">
-                <img src="assets/tesla-logo.svg" alt="Tesla">
+                <img src="assets/svg/tesla-logo.svg" alt="Tesla">
             </div>
 
             <div id="marker"></div>
@@ -43,7 +47,7 @@
                 </h2>
                 <div class="header-section-1">
                     <input class="search-bar" type="text" name="search-btn" placeholder="Search Models">
-                    <img src="assets/close-button.svg" class="modal-close-btn">
+                    <img src="assets/svg/close-button.svg" class="modal-close-btn">
                 </div>
 
             </div>
@@ -69,7 +73,7 @@
         <div class="shop-main">
             <div class="shop-results">
                 <div class="shop-item">
-                    <div class="item-img"><img src="assets/model-3-shop.jpg" alt=""></div>
+                    <div class="item-img"><img src="assets/bg-shop/model-3-shop.jpg" alt=""></div>
                     <div class="item-description">
 
                         <span class="shop-model-title">Model 3</span>
@@ -88,14 +92,14 @@
 
                     <div class="side-section-top">
                         <div class="back-button">
-                            <img src="assets/arrow-rigth.svg" class="" alt="">
+                            <img src="assets/svg/arrow-rigth.svg" class="" alt="">
                             <span>Back</span>
                         </div>
 
                     </div>
                     <span class="shop-model-title">Model 3</span>
 
-                    <div class="item-img"><img src="assets/model-3-shop.jpg" alt=""></div>
+                    <div class="item-img"><img src="assets/bg-shop/model-3-shop.jpg" alt=""></div>
                     <div class="item-description">
 
 
@@ -144,10 +148,12 @@
 
     </section>
 
+    <div class="shop-bg-overlay"></div>
+
     <section class="account-bg-overlay" id="account-bg-overlay">
         <div class="account" id="account">
             <div class="account-header">
-                <img class="account-logo" src="assets/tesla-logo.svg" alt="">
+                <img class="account-logo" src="assets/svg/tesla-logo.svg" alt="">
             </div>
             <div class="account-main">
                 <span class="warning-error">*Invalid Email/Password. Please, Try Again!</span>
@@ -194,7 +200,8 @@
                     <a href="#">CUSTOM ORDER</a>
                     <a href="#">EXISTING INVENTORY</a>
                 </div>
-                <div class="scroll-indicator-wrapper"><img class="scroll-indicator" src="assets/arrowDown.svg"></div>
+                <div class="scroll-indicator-wrapper"><img class="scroll-indicator" src="assets/svg/arrowDown.svg">
+                </div>
 
             </div>
 
@@ -207,7 +214,13 @@
 
 
 
-    <script type="module" src="style.js"></script>
+    <script type="module" src="js/style.js"></script>
+    <script type="module" src="js/sidemenu.js"></script>
+    <script type="module" src="js/shop.js"></script>
+    <script type="module" src="js/sections.js"></script>
+    <script type="module" src="js/account.js"></script>
+    <script type="module" src="js/data.js"></script>
+
 </body>
 
 </html>
