@@ -71,7 +71,7 @@ sideMenuOpenButton.addEventListener('click', () => {
                 }
                 if (element.id == "account") {
                     createMenuItens('li', `<a href='#' id="${element.id}-button"> <span>${element.name}</span></a>`, sideMenuPag2, '')
-
+                    login()
                 }
             }
         })
@@ -125,6 +125,7 @@ sideMenuOpenButton.addEventListener('click', () => {
 
     })
     openShopWays()
-    login()
+
+
 })
 
