@@ -1,27 +1,44 @@
 import { login } from "./account.js";
 import { modelsData } from "./data.js";
-const openShopModal = document.querySelectorAll('#shop-button')
+import { sideMenuBool } from "./sidemenu.js";
+import { sideMenu } from "./sidemenu.js";
+import { menuBgOverlay } from "./sidemenu.js";
+
 const modalResults = document.querySelector('.shop-results')
 const shopBgOverlay = document.querySelector('.shop-bg-overlay')
 
-openShopModal.forEach((e) => {
-    e.addEventListener('click', () => {
-        let shopModal = document.querySelector('.shop-modal')
-        let closeModalWays = document.querySelectorAll('.modal-close-btn, .shop-bg-overlay')
+export const openShopWays = () => {
+    let openShopModal = document.querySelectorAll('#shop-button')
+    openShopModal.forEach((e) => {
+        e.addEventListener('click', () => {
 
-        shopModal.classList.add('shop-modal-open')
-        shopBgOverlay.classList.add('open-shop-bg-overlay')
+            let shopModal = document.querySelector('.shop-modal')
+            let closeModalWays = document.querySelectorAll('.modal-close-btn, .shop-bg-overlay')
 
-        closeModalWays.forEach((e) => {
+            if (sideMenuBool === true) {
+                sideMenu.classList.remove('open-sidebar')
+                menuBgOverlay.classList.remove('open-menu-bg-overlay')
+                setTimeout(() => {
+                    shopModal.classList.add('shop-modal-open')
+                    shopBgOverlay.classList.add('open-shop-bg-overlay')
+                }, 300);
+            }
+            else {
+                shopModal.classList.add('shop-modal-open')
+                shopBgOverlay.classList.add('open-shop-bg-overlay')
+            }
 
-            e.addEventListener("click", () => {
-
-                shopModal.classList.remove('shop-modal-open')
-                shopBgOverlay.classList.remove('open-shop-bg-overlay')
+            closeModalWays.forEach((e) => {
+                e.addEventListener("click", () => {
+                    shopModal.classList.remove('shop-modal-open')
+                    shopBgOverlay.classList.remove('open-shop-bg-overlay')
+                })
             })
         })
     })
-})
+}
+
+openShopWays()
 
 //ITENS GENERATOR
 const ModelResult = (data) => {

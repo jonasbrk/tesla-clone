@@ -1,13 +1,14 @@
 
 import { sideMenuData } from "./data.js";
 import { modelsData } from "./data.js";
+import { openShopWays } from "./shop.js";
+import { login } from "./account.js";
 
-
-const sideMenu = document.querySelector('.sidebar')
-const menuBgOverlay = document.querySelector('.menu-bg-overlay')
+export const sideMenu = document.querySelector('.sidebar')
+export const menuBgOverlay = document.querySelector('.menu-bg-overlay')
 const sideMenuOpenButton = document.querySelector('#side-menu-button')
 const sideMenuItens = sideMenuData.sort((a, b) => a.category.localeCompare(b.category))
-let sideMenuBool = false
+export let sideMenuBool = false
 
 const createMenuItens = (type, innerHTML, parent, atributeType, atribute) => {
     let createMenuItens = document.createElement(type);
@@ -60,12 +61,18 @@ sideMenuOpenButton.addEventListener('click', () => {
                 }
                 if (element.id == "shop") {
                     createMenuItens('li', `<a href='#' id="${element.id}-button"> <span>${element.name}</span></a>`, sideMenuPag1, '')
+
                 }
             }
 
             if (index > 18) {
-                createMenuItens('li', `<a href='#'> <span>${element.name}</span></a>`, sideMenuPag2, '')
+                if (element.id != "account") {
+                    createMenuItens('li', `<a href='#'> <span>${element.name}</span></a>`, sideMenuPag2, '')
+                }
+                if (element.id == "account") {
+                    createMenuItens('li', `<a href='#' id="${element.id}-button"> <span>${element.name}</span></a>`, sideMenuPag2, '')
 
+                }
             }
         })
 
@@ -117,6 +124,7 @@ sideMenuOpenButton.addEventListener('click', () => {
         })
 
     })
-
+    openShopWays()
+    login()
 })
 
