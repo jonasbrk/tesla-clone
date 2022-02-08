@@ -18,12 +18,12 @@
 <img src="assets/images/readme/homepage.gif" style="height:350px" >
 <img src="assets/images/readme/homepage-responsive.gif" style="height:350px">
 </p>
-This is the first project that i ever made after i started to study JavaScript (about 1 month ago),
-Tesla clone is a Recreation of the oficial Tesla website, and i made it thinking in get closer as possible to the real one visualy and adding some new features to, like the MODEL SHOP and LOGIN SCREEN. These are some concepts that i covered in the building process:
+This is the first project that I ever made after I started to study JavaScript (about 1 month ago),
+Tesla clone is a Recreation of the oficial Tesla website, and I made it thinking in get closer as possible to the real one visually and adding some features as well, like the MODEL SHOP and LOGIN SCREEN. These are some concepts that I covered in the building process:
 
   - Objects and DOM manipulation;
-  - concat, filter, sort and addEventListener;
-  - Methods in general:
+  - Concat, filter, Sort and addEventListener;
+  - Methods in general;
   - Object and arrays manipulation;
   - Loops;
   - Modulation (import, export);
@@ -39,7 +39,7 @@ Tesla clone is a Recreation of the oficial Tesla website, and i made it thinking
 
 <h1>Features</h1>
 
-to add more complexity to the project i decided to add some features:
+In order to add more complexity to the project I decided to add some features:
 
 
 <h2>Shop Model</h2>
@@ -54,7 +54,7 @@ Simulate a shop page in a modal.<br>
 
 <h2>Login Modal</h2>
 
-A feature created to simulate a simple Login screen with some validation.
+Simulate a simple Login screen with some validation.
 <br><br>
 Obs: <br>
 Email: tesla@tesla.com<br>
