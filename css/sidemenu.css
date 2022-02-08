@@ -16,13 +16,13 @@
     opacity: 0;
     }
     
-    .open-menu-bg-overlay{
+.open-menu-bg-overlay{
         transition: opacity 0.5s ease, visibility, 0.5s;
         visibility: inherit;
         opacity: 1;
     }
     
-    .sidebar {
+.sidebar {
     
         height: 100%;
         width: 312px;
@@ -38,18 +38,17 @@
         visibility: hidden;
         opacity: 0;
         overflow-y: auto;
-    
     }
     
-    .open-sidebar {
+.open-sidebar {
+        
         transition: transform 0.5s ease, opacity 0.5s ease, visibility, 0.5s;
         visibility: inherit;
         transform: translateX(0);
         opacity: 1;
-        
     }
     
-    .sidebar-header {
+.sidebar-header {
     
         height: 65px;
         width: 100%;
@@ -61,60 +60,58 @@
     }
     
     
-    .sidebar-header .sidebar-back-button {
+.sidebar-header .sidebar-back-button {
     
     display: flex;
     align-items: center;
     visibility: hidden;
     cursor: pointer;
-    
     }
     
-    .sidebar-header .sidebar-back-button img {
+.sidebar-header .sidebar-back-button img {
     
-        height: 14px;
-        transform: rotate(180deg);
-        margin-right: 5px;
-    
+    height: 14px;
+    transform: rotate(180deg);
+    margin-right: 5px;
     }
     
     
-    .sidebar ul {
+.sidebar ul {
         
-        height: auto;
-        width: 100%;
-        box-sizing: border-box;
-        padding-right: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        list-style-type: none;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style-type: none;
     
     }
     
-    .sidebar ul li {
+.sidebar ul li {
     
-        height: 40px;
-        width: 100%;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 21px;
-        cursor: pointer;
+    height: 40px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
     
     }
     
-    .sidebar ul li a{
+.sidebar ul li a{
     
-        width: 100%;
-        display: flex;
-        align-items: center;
-        box-sizing: border-box;
-        text-decoration: none;
-        border-radius: 12px;
-        margin: 5px 0;
-        padding: 5px 15px;
-        transition: background-color 0.3s ease-in-out;
-        cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    border-radius: 12px;
+    margin: 5px 0;
+    padding: 5px 15px;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
     }
     
     

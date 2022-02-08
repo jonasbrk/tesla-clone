@@ -19,12 +19,11 @@
     }
     
 .open-account-bg-overlay{
-        transition: opacity 0.5s ease, visibility, 0.5s;
-        visibility: inherit;
-        opacity: 1;
+    
+    transition: opacity 0.5s ease, visibility, 0.5s;
+    visibility: inherit;
+    opacity: 1;
 }
-
-
 
 .account {
 
@@ -32,8 +31,6 @@
     flex-direction: column;
     height: 290px;
     width: 274px;
-
-
     padding: 15px;
     box-sizing: border-box;
     border-radius: 10px;
@@ -45,14 +42,12 @@
     transition: all 0.3s ease;
 }
 
-
  .account-open {
 
     visibility: inherit;
     transform: translateY(0px);
     opacity: 1;
 }
-
 
 .account-header {
 
@@ -62,27 +57,20 @@
     justify-content: center;
     align-items: center;
     position: relative;
-
-
 }
 
 .account .account-back-button {
 
     height: 20px;
-
 }
 
 .account .account-logo {
 
-height: 20px;
-
+    height: 20px;
 }
-
-
 
 .account-main {
 
-    
     display: none;
     flex-basis: 80%;
     flex-direction: column;
@@ -94,16 +82,13 @@ height: 20px;
 
     display: flex;
     opacity: 1;
-
 }
 
 .account-main-close {
 
     display: flex;
     opacity: 0;
-
 }
-
 
 .logged-screen{
 
@@ -118,22 +103,18 @@ height: 20px;
     visibility: inherit;
     opacity: 1;
     transition: all 0.3s ease;
-
 }
 
 .logged-screen-open{
 
     display: flex;
     opacity: 1;
-
 }
-
 
 .logged-screen-close{
 
     display: flex;
     opacity: 0;
-
 }
 
 .logged-screen .logged-title {
@@ -141,7 +122,6 @@ height: 20px;
     font-weight: 700;
     font-size: 30px;
     color: #00c000;
-
 }
 
 .logged-screen .logged-messege {
@@ -149,7 +129,6 @@ height: 20px;
     font-weight: 700;
     font-size: 18px;
     color: #00c000;
-
 }
 
 .logged-screen a {
@@ -171,10 +150,6 @@ height: 20px;
     background-color: #b8b8b8;
 }
 
-
-
-
-
 .account-input {
 
     width: 100%;
@@ -185,13 +160,7 @@ height: 20px;
     align-items: center;
     justify-content: space-evenly;
     box-sizing: border-box;
-
 }
-
-
-
-
-
 
 .account-input input {
 
@@ -206,12 +175,10 @@ height: 20px;
     outline: none;
 }
 
-
 .account-input input:focus {
 
     border: 1px solid gray;
 }
-
 
 .account-buttons {
 
@@ -222,27 +189,25 @@ height: 20px;
     flex-direction: column;
     justify-content: space-around;
     box-sizing: border-box;
-
 }
 
 .account-buttons a {
 
     text-decoration: none;
-
 }
 
 .account-buttons .account-button {
 
-height: 30px;
-width: fit-content;
-background-color: #dcd8d8;
-padding: 5px 30px;
-text-align: center;
-line-height: 30px;
-border-radius: 5px;
-font-weight: 500;
-align-self:flex-end;
-cursor: pointer;
+    height: 30px;
+    width: fit-content;
+    background-color: #dcd8d8;
+    padding: 5px 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 5px;
+    font-weight: 500;
+    align-self:flex-end;
+    cursor: pointer;
 }
 
 
@@ -255,22 +220,17 @@ color: white;
 
 
 .account-buttons .login-button:hover {
-
-
+    
     background-color: #dcd8d8;
-
-
 }
 
-
 .warning-error {
-
+    
     display: none;
 }
 
-
 .warning-error-open {
-
+    
     color: red;
     font-size: 12px;
     display: inherit;

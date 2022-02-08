@@ -17,14 +17,11 @@ main section {
     display: flex;
     flex-direction: column;
     align-items: center;
- 
-
 }
 
 .section-model {
 
     height: 100vh;
-
 }
 
 .section-model picture, .section-model source, .section-model img {
@@ -33,10 +30,7 @@ main section {
     width: 100%;
     object-fit: cover;
     object-position: center;
-
 }
-
-
 
 .model-wrapper {
 
@@ -46,12 +40,8 @@ main section {
     width: fit-content;
     position: fixed;
     top: 54px;
-    margin-top: 10vh;
-
-    
+    margin-top: 10vh;   
 }
-
-
 
 .model-title {
 
@@ -60,10 +50,7 @@ main section {
     margin: 0%; 
     animation: ini-reveal-animation 1.5s;
     animation-delay: 1s;
-
-
 }
-
 
 .model-description {
 
@@ -78,10 +65,7 @@ main section {
 
     opacity: 0;
     animation-fill-mode: forwards;
-
-
 }
-
 
 .button-wrapper{
     display: flex;
@@ -96,7 +80,6 @@ main section {
 
     cursor: pointer;
 }
-
 
 .button-wrapper a:nth-child(1){
 
@@ -114,7 +97,6 @@ main section {
     animation-fill-mode: forwards;
 }
 
-
 .button-wrapper a {
     height: 40px;
     width: 256px;
@@ -128,10 +110,7 @@ main section {
     font-size: 14px;
     font-weight: 500;
     color: #313338;
-
 }
-
-
 
 .button-wrapper a:first-child {
     color: white;
@@ -143,7 +122,6 @@ main section {
     height: 30px;
     animation: bouncing-scroll-indicator 2s infinite;
     animation-delay: 3s;
-
 }
 
 .scroll-indicator-wrapper {
@@ -167,9 +145,7 @@ main section {
         transform: translateY(0px);
         opacity: 1;
     }
-
 }
-
 
 @keyframes bouncing-scroll-indicator {
     0% {transform: translateY(0);}

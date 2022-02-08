@@ -156,7 +156,7 @@ const ModelResult = (data) => {
                         })
                     }, 300)
                 })
-
+                login()
             }
 
         })
