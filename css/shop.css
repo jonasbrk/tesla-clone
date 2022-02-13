@@ -177,7 +177,7 @@
 .shop-main .shop-side-section-open {
 
     width: 500px;
-    height: 41rem;
+    height: 100%;
     display: flex;
     visibility: inherit;
 }
