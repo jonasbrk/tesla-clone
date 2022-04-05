@@ -18,8 +18,7 @@
 <img src="assets/images/readme/homepage.gif" style="height:350px" >
 <img src="assets/images/readme/homepage-responsive.gif" style="height:350px">
 </p>
-This is the first project that I ever made after I started to study JavaScript (about 1 month ago),
-Tesla clone is a Recreation of the oficial Tesla website, and I made it thinking in get closer as possible to the real one visually and adding some features as well, like the MODEL SHOP and LOGIN SCREEN. These are some concepts that I covered in the building process:
+A Recration of official tesla website, built with JavaScrip, HTML and CSS. Made thinking in get closer as possible to the real one visually and adding some features as well, like the MODEL SHOP and LOGIN SCREEN. These are some concepts that I covered in the building process:
 
   - Objects and DOM manipulation;
   - Concat, filter, Sort and addEventListener;
